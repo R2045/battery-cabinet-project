@@ -1,438 +1,424 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="Generator" content="Kate, the KDE Advanced Text Editor" />
-<title>index.html</title>
-</head>
-<!-- Highlighting: "HTML" -->
-<body>
-<pre style='color:#cfcfc2;background-color:#232629;'>
-<b><span style='color:#2980b9;'>&lt;!DOCTYPE</span></b> html<b><span style='color:#2980b9;'>&gt;</span></b>
-<span style='color:#2980b9;'>&lt;</span><b>html</b><span style='color:#27ae60;'> lang</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;en&quot;</span><span style='color:#2980b9;'>&gt;</span>
-<span style='color:#2980b9;'>&lt;</span><b>head</b><span style='color:#2980b9;'>&gt;</span>
-    <span style='color:#2980b9;'>&lt;</span><b>meta</b><span style='color:#27ae60;'> charset</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;UTF-8&quot;</span><span style='color:#2980b9;'>&gt;</span>
-    <span style='color:#2980b9;'>&lt;</span><b>meta</b><span style='color:#27ae60;'> name</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;viewport&quot;</span><span style='color:#27ae60;'> content</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;width=device-width, initial-scale=1.0&quot;</span><span style='color:#2980b9;'>&gt;</span>
-    <span style='color:#2980b9;'>&lt;</span><b>title</b><span style='color:#2980b9;'>&gt;</span>Battery Management <span style='color:#da4453;'>&amp;</span> Checkout System<span style='color:#2980b9;'>&lt;/</span><b>title</b><span style='color:#2980b9;'>&gt;</span>
-    <span style='color:#7a7c7d;'>&lt;!-- Load Tailwind CSS for modern styling --&gt;</span>
-    <span style='color:#2980b9;'>&lt;</span><b>script</b><span style='color:#27ae60;'> src</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;https://cdn.tailwindcss.com&quot;</span><span style='color:#2980b9;'>&gt;&lt;/</span><b>script</b><span style='color:#2980b9;'>&gt;</span>
-    <span style='color:#2980b9;'>&lt;</span><b>style</b><span style='color:#2980b9;'>&gt;</span>
-        <span style='color:#7a7c7d;'>/* Custom styles for better aesthetics and readability */</span>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Management & Checkout System</title>
+    <!-- Load Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for better aesthetics and readability */
         body {
-            <b>font-family</b><span style='color:#3daee9;'>:</span> <span style='color:#f44f4f;'>'Inter'</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>sans-serif</span><span style='color:#3f8058;'>;</span>
-            <b>background-color</b><span style='color:#3daee9;'>:</span> <b><span style='color:#27aeae;'>#f3f4f6</span></b><span style='color:#3f8058;'>;</span>
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
         }
-        <span style='color:#8e44ad;'>.card</span> {
-            <b>background-color</b><span style='color:#3daee9;'>:</span> <b><span style='color:#27aeae;'>#ffffff</span></b><span style='color:#3f8058;'>;</span>
-            <b>border-radius</b><span style='color:#3daee9;'>:</span> <span style='color:#f67400;'>1</span><span style='color:#2980b9;'>rem</span><span style='color:#3f8058;'>;</span>
-            <b>box-shadow</b><span style='color:#3daee9;'>:</span> <span style='color:#f67400;'>0</span> <span style='color:#f67400;'>10</span><span style='color:#2980b9;'>px</span> <span style='color:#f67400;'>15</span><span style='color:#2980b9;'>px</span> <span style='color:#f67400;'>-3</span><span style='color:#2980b9;'>px</span> <span style='color:#8e44ad;'>rgba(</span><span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>0.1</span><span style='color:#8e44ad;'>)</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>0</span> <span style='color:#f67400;'>4</span><span style='color:#2980b9;'>px</span> <span style='color:#f67400;'>6</span><span style='color:#2980b9;'>px</span> <span style='color:#f67400;'>-2</span><span style='color:#2980b9;'>px</span> <span style='color:#8e44ad;'>rgba(</span><span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>0.05</span><span style='color:#8e44ad;'>)</span><span style='color:#3f8058;'>;</span>
-            <b>padding</b><span style='color:#3daee9;'>:</span> <span style='color:#f67400;'>1.5</span><span style='color:#2980b9;'>rem</span><span style='color:#3f8058;'>;</span>
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
         }
-        <span style='color:#8e44ad;'>.status-available</span> {
-            <b>background-color</b><span style='color:#3daee9;'>:</span> <b><span style='color:#27aeae;'>#d1fae5</span></b><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>/* Green light */</span>
-            <b>color</b><span style='color:#3daee9;'>:</span> <b><span style='color:#27aeae;'>#065f46</span></b><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>/* Green dark */</span>
+        .status-available {
+            background-color: #d1fae5; /* Green light */
+            color: #065f46; /* Green dark */
         }
-        <span style='color:#8e44ad;'>.status-checked-out</span> {
-            <b>background-color</b><span style='color:#3daee9;'>:</span> <b><span style='color:#27aeae;'>#fee2e2</span></b><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>/* Red light */</span>
-            <b>color</b><span style='color:#3daee9;'>:</span> <b><span style='color:#27aeae;'>#991b1b</span></b><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>/* Red dark */</span>
+        .status-checked-out {
+            background-color: #fee2e2; /* Red light */
+            color: #991b1b; /* Red dark */
         }
-        <span style='color:#7a7c7d;'>/* Mobile-first focus for large text input */</span>
-        <b><span style='color:#27ae60;'>#batteryIdInput</span></b> {
-            <b>font-size</b><span style='color:#3daee9;'>:</span> <span style='color:#f67400;'>1.5</span><span style='color:#2980b9;'>rem</span><span style='color:#3f8058;'>;</span>
-            <b>padding</b><span style='color:#3daee9;'>:</span> <span style='color:#f67400;'>0.75</span><span style='color:#2980b9;'>rem</span><span style='color:#3f8058;'>;</span>
-            <b>text-align</b><span style='color:#3daee9;'>:</span> <span style='color:#f67400;'>center</span><span style='color:#3f8058;'>;</span>
+        /* Mobile-first focus for large text input */
+        #batteryIdInput {
+            font-size: 1.5rem;
+            padding: 0.75rem;
+            text-align: center;
         }
-    <span style='color:#2980b9;'>&lt;/</span><b>style</b><span style='color:#2980b9;'>&gt;</span>
-<span style='color:#2980b9;'>&lt;/</span><b>head</b><span style='color:#2980b9;'>&gt;</span>
-<span style='color:#2980b9;'>&lt;</span><b>body</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;min-h-screen p-4 sm:p-8&quot;</span><span style='color:#2980b9;'>&gt;</span>
-    <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;max-w-4xl mx-auto&quot;</span><span style='color:#2980b9;'>&gt;</span>
-        <span style='color:#2980b9;'>&lt;</span><b>header</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-center mb-8&quot;</span><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>h1</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-4xl font-extrabold text-gray-900 mb-2&quot;</span><span style='color:#2980b9;'>&gt;</span>Battery Checkout System<span style='color:#2980b9;'>&lt;/</span><b>h1</b><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>p</b><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;auth-status&quot;</span><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-lg text-gray-600&quot;</span><span style='color:#2980b9;'>&gt;</span>Initializing...<span style='color:#2980b9;'>&lt;/</span><b>p</b><span style='color:#2980b9;'>&gt;</span>
-        <span style='color:#2980b9;'>&lt;/</span><b>header</b><span style='color:#2980b9;'>&gt;</span>
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Battery Checkout System</h1>
+            <p id="auth-status" class="text-lg text-gray-600">Initializing...</p>
+        </header>
 
-        <span style='color:#7a7c7d;'>&lt;!-- 1. Main Transaction Card (Simulates Scanner Interface) --&gt;</span>
-        <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;card mb-8&quot;</span><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>h2</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-2xl font-semibold mb-4 text-gray-800 flex items-center&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>svg</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;w-6 h-6 mr-2 text-indigo-600&quot;</span><span style='color:#27ae60;'> fill</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;none&quot;</span><span style='color:#27ae60;'> stroke</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;currentColor&quot;</span><span style='color:#27ae60;'> viewBox</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;0 0 24 24&quot;</span><span style='color:#27ae60;'> xmlns</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;http://www.w3.org/2000/svg&quot;</span><span style='color:#2980b9;'>&gt;&lt;</span><b>path</b><span style='color:#27ae60;'> stroke-linecap</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-linejoin</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-width</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;2&quot;</span><span style='color:#27ae60;'> d</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2zM15.5 10.5a.5.5 0 11-1 0 .5.5 0 011 0z&quot;</span><span style='color:#2980b9;'>&gt;&lt;/</span><b>path</b><span style='color:#2980b9;'>&gt;&lt;/</span><b>svg</b><span style='color:#2980b9;'>&gt;</span>
+        <!-- 1. Main Transaction Card (Simulates Scanner Interface) -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2zM15.5 10.5a.5.5 0 11-1 0 .5.5 0 011 0z"></path></svg>
                 Scan Interface (Enter Battery Barcode)
-            <span style='color:#2980b9;'>&lt;/</span><b>h2</b><span style='color:#2980b9;'>&gt;</span>
+            </h2>
 
-            <span style='color:#2980b9;'>&lt;</span><b>input</b><span style='color:#27ae60;'> type</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text&quot;</span><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;batteryIdInput&quot;</span><span style='color:#27ae60;'> placeholder</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;Enter Battery ID (e.g., BATT-001)&quot;</span>
-<span style='color:#27ae60;'>                   class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;w-full border-2 border-indigo-300 focus:border-indigo-500 rounded-lg mb-4 transition duration-150 ease-in-out&quot;</span><span style='color:#2980b9;'>&gt;</span>
+            <input type="text" id="batteryIdInput" placeholder="Enter Battery ID (e.g., BATT-001)"
+                   class="w-full border-2 border-indigo-300 focus:border-indigo-500 rounded-lg mb-4 transition duration-150 ease-in-out">
 
-            <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;action-message&quot;</span><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-center p-3 rounded-lg text-sm mb-4 hidden&quot;</span><span style='color:#2980b9;'>&gt;&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
+            <div id="action-message" class="text-center p-3 rounded-lg text-sm mb-4 hidden"></div>
 
-            <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;flex flex-col sm:flex-row gap-4&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>button</b><span style='color:#27ae60;'> onclick</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;handleTransaction('checkout')&quot;</span><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;checkout-btn&quot;</span>
-<span style='color:#27ae60;'>                        class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;flex-1 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out disabled:opacity-50&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                    <span style='color:#2980b9;'>&lt;</span><b>svg</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;w-5 h-5 inline mr-2&quot;</span><span style='color:#27ae60;'> fill</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;none&quot;</span><span style='color:#27ae60;'> stroke</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;currentColor&quot;</span><span style='color:#27ae60;'> viewBox</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;0 0 24 24&quot;</span><span style='color:#27ae60;'> xmlns</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;http://www.w3.org/24/24/svg&quot;</span><span style='color:#2980b9;'>&gt;&lt;</span><b>path</b><span style='color:#27ae60;'> stroke-linecap</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-linejoin</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-width</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;2&quot;</span><span style='color:#27ae60;'> d</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m5-10v-1a3 3 0 013-3h7a3 3 0 013 3v1&quot;</span><span style='color:#2980b9;'>&gt;&lt;/</span><b>path</b><span style='color:#2980b9;'>&gt;&lt;/</span><b>svg</b><span style='color:#2980b9;'>&gt;</span>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button onclick="handleTransaction('checkout')" id="checkout-btn"
+                        class="flex-1 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out disabled:opacity-50">
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m5-10v-1a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
                     Check Out
-                <span style='color:#2980b9;'>&lt;/</span><b>button</b><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>button</b><span style='color:#27ae60;'> onclick</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;handleTransaction('checkin')&quot;</span><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;checkin-btn&quot;</span>
-<span style='color:#27ae60;'>                        class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;flex-1 px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 ease-in-out disabled:opacity-50&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                    <span style='color:#2980b9;'>&lt;</span><b>svg</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;w-5 h-5 inline mr-2&quot;</span><span style='color:#27ae60;'> fill</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;none&quot;</span><span style='color:#27ae60;'> stroke</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;currentColor&quot;</span><span style='color:#27ae60;'> viewBox</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;0 0 24 24&quot;</span><span style='color:#27ae60;'> xmlns</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;http://www.w3.org/24/24/svg&quot;</span><span style='color:#2980b9;'>&gt;&lt;</span><b>path</b><span style='color:#27ae60;'> stroke-linecap</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-linejoin</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-width</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;2&quot;</span><span style='color:#27ae60;'> d</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;M13 9l3 3m0 0l-3 3m3-3H8m5 3h6V7a2 2 0 00-2-2H7a2 2 0 00-2 2v4&quot;</span><span style='color:#2980b9;'>&gt;&lt;/</span><b>path</b><span style='color:#2980b9;'>&gt;&lt;/</span><b>svg</b><span style='color:#2980b9;'>&gt;</span>
+                </button>
+                <button onclick="handleTransaction('checkin')" id="checkin-btn"
+                        class="flex-1 px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 ease-in-out disabled:opacity-50">
+                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m5 3h6V7a2 2 0 00-2-2H7a2 2 0 00-2 2v4"></path></svg>
                     Check In / Charge
-                <span style='color:#2980b9;'>&lt;/</span><b>button</b><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
-        <span style='color:#2980b9;'>&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
+                </button>
+            </div>
+        </div>
 
-        <span style='color:#7a7c7d;'>&lt;!-- 2. Add New Battery Card (Setup/Initialization) --&gt;</span>
-        <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;card mb-8&quot;</span><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>h2</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-2xl font-semibold mb-4 text-gray-800 flex items-center&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>svg</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;w-6 h-6 mr-2 text-red-500&quot;</span><span style='color:#27ae60;'> fill</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;none&quot;</span><span style='color:#27ae60;'> stroke</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;currentColor&quot;</span><span style='color:#27ae60;'> viewBox</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;0 0 24 24&quot;</span><span style='color:#27ae60;'> xmlns</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;http://www.w3.org/24/24/svg&quot;</span><span style='color:#2980b9;'>&gt;&lt;</span><b>path</b><span style='color:#27ae60;'> stroke-linecap</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-linejoin</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-width</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;2&quot;</span><span style='color:#27ae60;'> d</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z&quot;</span><span style='color:#2980b9;'>&gt;&lt;/</span><b>path</b><span style='color:#2980b9;'>&gt;&lt;/</span><b>svg</b><span style='color:#2980b9;'>&gt;</span>
+        <!-- 2. Add New Battery Card (Setup/Initialization) -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 New Battery Registration
-            <span style='color:#2980b9;'>&lt;/</span><b>h2</b><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>input</b><span style='color:#27ae60;'> type</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text&quot;</span><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;newBatteryId&quot;</span><span style='color:#27ae60;'> placeholder</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;New ID (e.g., BATT-006)&quot;</span>
-<span style='color:#27ae60;'>                       class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;col-span-1 border border-gray-300 rounded-lg p-3&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>input</b><span style='color:#27ae60;'> type</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text&quot;</span><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;newBatteryCategory&quot;</span><span style='color:#27ae60;'> placeholder</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;Category (e.g., Syma X5C Drone)&quot;</span>
-<span style='color:#27ae60;'>                       class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;col-span-2 border border-gray-300 rounded-lg p-3&quot;</span><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>button</b><span style='color:#27ae60;'> onclick</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;addNewBattery()&quot;</span><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;add-new-btn&quot;</span>
-<span style='color:#27ae60;'>                    class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;w-full px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition duration-150 ease-in-out disabled:opacity-50 text-sm&quot;</span><span style='color:#2980b9;'>&gt;</span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+                <input type="text" id="newBatteryId" placeholder="New ID (e.g., BATT-006)"
+                       class="col-span-1 border border-gray-300 rounded-lg p-3">
+                <input type="text" id="newBatteryCategory" placeholder="Category (e.g., Syma X5C Drone)"
+                       class="col-span-2 border border-gray-300 rounded-lg p-3">
+            </div>
+            <button onclick="addNewBattery()" id="add-new-btn"
+                    class="w-full px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition duration-150 ease-in-out disabled:opacity-50 text-sm">
                 Register New Battery with Category
-            <span style='color:#2980b9;'>&lt;/</span><b>button</b><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>button</b><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;seed-data-btn&quot;</span><span style='color:#27ae60;'> onclick</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;seedInitialData()&quot;</span>
-<span style='color:#27ae60;'>                    class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;mt-4 w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out text-sm&quot;</span><span style='color:#2980b9;'>&gt;</span>
+            </button>
+            <button id="seed-data-btn" onclick="seedInitialData()"
+                    class="mt-4 w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out text-sm">
                 Initialize Fleet with Sample Data (If empty)
-            <span style='color:#2980b9;'>&lt;/</span><b>button</b><span style='color:#2980b9;'>&gt;</span>
-        <span style='color:#2980b9;'>&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
+            </button>
+        </div>
 
-        <span style='color:#7a7c7d;'>&lt;!-- 3. Battery Status Dashboard --&gt;</span>
-        <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;card mb-8&quot;</span><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;</span><b>h2</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-2xl font-semibold mb-4 text-gray-800 flex items-center&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>svg</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;w-6 h-6 mr-2 text-indigo-600&quot;</span><span style='color:#27ae60;'> fill</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;none&quot;</span><span style='color:#27ae60;'> stroke</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;currentColor&quot;</span><span style='color:#27ae60;'> viewBox</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;0 0 24 24&quot;</span><span style='color:#27ae60;'> xmlns</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;http://www.w3.org/24/24/svg&quot;</span><span style='color:#2980b9;'>&gt;&lt;</span><b>path</b><span style='color:#27ae60;'> stroke-linecap</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-linejoin</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;round&quot;</span><span style='color:#27ae60;'> stroke-width</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;2&quot;</span><span style='color:#27ae60;'> d</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0-4c-1.657 0-3 .895-3 2s1.343 2 3 2m-3 3h6M3 6h18M3 10h18M3 14h18M3 18h18&quot;</span><span style='color:#2980b9;'>&gt;&lt;/</span><b>path</b><span style='color:#2980b9;'>&gt;&lt;/</span><b>svg</b><span style='color:#2980b9;'>&gt;</span>
+        <!-- 3. Battery Status Dashboard -->
+        <div class="card mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0-4c-1.657 0-3 .895-3 2s1.343 2 3 2m-3 3h6M3 6h18M3 10h18M3 14h18M3 18h18"></path></svg>
                 Battery Fleet Status
-            <span style='color:#2980b9;'>&lt;/</span><b>h2</b><span style='color:#2980b9;'>&gt;</span>
+            </h2>
 
-            <span style='color:#2980b9;'>&lt;</span><b>div</b><span style='color:#27ae60;'> id</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;battery-list&quot;</span><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;space-y-3&quot;</span><span style='color:#2980b9;'>&gt;</span>
-                <span style='color:#2980b9;'>&lt;</span><b>p</b><span style='color:#27ae60;'> class</span><span style='color:#3f8058;'>=</span><span style='color:#f44f4f;'>&quot;text-gray-500&quot;</span><span style='color:#2980b9;'>&gt;</span>Loading battery data...<span style='color:#2980b9;'>&lt;/</span><b>p</b><span style='color:#2980b9;'>&gt;</span>
-            <span style='color:#2980b9;'>&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
-        <span style='color:#2980b9;'>&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
-    <span style='color:#2980b9;'>&lt;/</span><b>div</b><span style='color:#2980b9;'>&gt;</span>
+            <div id="battery-list" class="space-y-3">
+                <p class="text-gray-500">Loading battery data...</p>
+            </div>
+        </div>
+    </div>
 
-    <span style='color:#7a7c7d;'>&lt;!-- Firebase Imports --&gt;</span>
-    <span style='color:#2980b9;'>&lt;</span><b>script</b><span style='color:#27ae60;'> type=</span><span style='color:#f44f4f;'>&quot;module&quot;</span><span style='color:#2980b9;'>&gt;</span>
-        <span style='color:#27ae60;'>import</span> { initializeApp } <span style='color:#27ae60;'>from</span> <span style='color:#f44f4f;'>&quot;https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js&quot;</span><span style='color:#3f8058;'>;</span>
-        <span style='color:#27ae60;'>import</span> { getAuth<span style='color:#3f8058;'>,</span> signInAnonymously<span style='color:#3f8058;'>,</span> signInWithCustomToken<span style='color:#3f8058;'>,</span> onAuthStateChanged } <span style='color:#27ae60;'>from</span> <span style='color:#f44f4f;'>&quot;https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js&quot;</span><span style='color:#3f8058;'>;</span>
-        <span style='color:#27ae60;'>import</span> { getFirestore<span style='color:#3f8058;'>,</span> doc<span style='color:#3f8058;'>,</span> setDoc<span style='color:#3f8058;'>,</span> onSnapshot<span style='color:#3f8058;'>,</span> collection<span style='color:#3f8058;'>,</span> query<span style='color:#3f8058;'>,</span> serverTimestamp<span style='color:#3f8058;'>,</span> getDoc } <span style='color:#27ae60;'>from</span> <span style='color:#f44f4f;'>&quot;https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js&quot;</span><span style='color:#3f8058;'>;</span>
-        <span style='color:#27ae60;'>import</span> { setLogLevel } <span style='color:#27ae60;'>from</span> <span style='color:#f44f4f;'>&quot;https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js&quot;</span><span style='color:#3f8058;'>;</span>
+    <!-- Firebase Imports -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, query, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        <span style='color:#7a7c7d;'>// Global Firebase and App variables</span>
-        <b><i>let</i></b> app<span style='color:#3f8058;'>;</span>
-        <b><i>let</i></b> db<span style='color:#3f8058;'>;</span>
-        <b><i>let</i></b> auth<span style='color:#3f8058;'>;</span>
-        <b><i>let</i></b> userId <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'unknown'</span><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>// Will be updated on successful sign-in</span>
-        <b>const</b> appId <span style='color:#3f8058;'>=</span> <b>typeof</b> __app_id <span style='color:#3f8058;'>!==</span> <span style='color:#f44f4f;'>'undefined'</span> <span style='color:#3f8058;'>?</span> __app_id <span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'default-app-id'</span><span style='color:#3f8058;'>;</span>
-        <b>const</b> firebaseConfig <span style='color:#3f8058;'>=</span> <b>typeof</b> __firebase_config <span style='color:#3f8058;'>!==</span> <span style='color:#f44f4f;'>'undefined'</span> <span style='color:#3f8058;'>?</span> <span style='color:#7f8c8d;'>JSON</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>parse</span></i>(__firebase_config) <span style='color:#3f8058;'>:</span> {}<span style='color:#3f8058;'>;</span>
-        <b>const</b> BATTERY_COLLECTION_PATH <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`/artifacts/</span><span style='color:#3daee9;'>${</span>appId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'>/public/data/batteries`</span><span style='color:#3f8058;'>;</span>
+        // Global Firebase and App variables
+        let app;
+        let db;
+        let auth;
+        let userId = 'unknown'; // Will be updated on successful sign-in
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const BATTERY_COLLECTION_PATH = `/artifacts/${appId}/public/data/batteries`;
 
-        <span style='color:#7a7c7d;'>// Expose functions globally for HTML click handlers</span>
-        <span style='color:#7f8c8d;'>window</span><span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>handleTransaction</span> <span style='color:#3f8058;'>=</span> handleTransaction<span style='color:#3f8058;'>;</span>
-        <span style='color:#7f8c8d;'>window</span><span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>seedInitialData</span> <span style='color:#3f8058;'>=</span> seedInitialData<span style='color:#3f8058;'>;</span>
-        <span style='color:#7f8c8d;'>window</span><span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>addNewBattery</span> <span style='color:#3f8058;'>=</span> addNewBattery<span style='color:#3f8058;'>;</span>
+        // Expose functions globally for HTML click handlers
+        window.handleTransaction = handleTransaction;
+        window.seedInitialData = seedInitialData;
+        window.addNewBattery = addNewBattery;
 
-        <span style='color:#7a7c7d;'>// Set Firestore debug logging</span>
-        <span style='color:#8e44ad;'>setLogLevel</span>(<span style='color:#f44f4f;'>'debug'</span>)<span style='color:#3f8058;'>;</span>
+        // Set Firestore debug logging
+        setLogLevel('debug');
 
 
-        <span style='color:#7a7c7d;'>/**</span>
-<span style='color:#7a7c7d;'>         * Initializes Firebase and authenticates the user.</span>
-<span style='color:#7a7c7d;'>         */</span>
-        <b><i>async</i></b> <b>function</b> <span style='color:#8e44ad;'>setupFirebase</span>() {
-            <b><span style='color:#fdbc4b;'>try</span></b> {
-                <b><span style='color:#fdbc4b;'>if</span></b> (<span style='color:#7f8c8d;'>Object</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>keys</span>(firebaseConfig)<span style='color:#3f8058;'>.</span><i><span style='color:#2980b9;'>length</span></i> <span style='color:#3f8058;'>===</span> <span style='color:#f67400;'>0</span>) {
-                    <b><span style='color:#fdbc4b;'>throw</span></b> <b>new</b> <span style='color:#7f8c8d;'>Error</span>(<span style='color:#f44f4f;'>&quot;Firebase config not available. Cannot initialize.&quot;</span>)<span style='color:#3f8058;'>;</span>
+        /**
+         * Initializes Firebase and authenticates the user.
+         */
+        async function setupFirebase() {
+            try {
+                if (Object.keys(firebaseConfig).length === 0) {
+                    throw new Error("Firebase config not available. Cannot initialize.");
                 }
 
-                app <span style='color:#3f8058;'>=</span> <span style='color:#8e44ad;'>initializeApp</span>(firebaseConfig)<span style='color:#3f8058;'>;</span>
-                db <span style='color:#3f8058;'>=</span> <span style='color:#8e44ad;'>getFirestore</span>(app)<span style='color:#3f8058;'>;</span>
-                auth <span style='color:#3f8058;'>=</span> <span style='color:#8e44ad;'>getAuth</span>(app)<span style='color:#3f8058;'>;</span>
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
 
-                <span style='color:#7a7c7d;'>// Authentication using custom token or anonymously</span>
-                <b>const</b> initialAuthToken <span style='color:#3f8058;'>=</span> <b>typeof</b> __initial_auth_token <span style='color:#3f8058;'>!==</span> <span style='color:#f44f4f;'>'undefined'</span> <span style='color:#3f8058;'>?</span> __initial_auth_token <span style='color:#3f8058;'>:</span> <b>null</b><span style='color:#3f8058;'>;</span>
-                <b><span style='color:#fdbc4b;'>if</span></b> (initialAuthToken) {
-                    <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>signInWithCustomToken</span>(auth<span style='color:#3f8058;'>,</span> initialAuthToken)<span style='color:#3f8058;'>;</span>
-                } <b><span style='color:#fdbc4b;'>else</span></b> {
-                    <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>signInAnonymously</span>(auth)<span style='color:#3f8058;'>;</span>
+                // Authentication using custom token or anonymously
+                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
                 }
 
-                <span style='color:#7a7c7d;'>// Listen for Auth State changes to get the User ID (CTEC ID)</span>
-                <span style='color:#8e44ad;'>onAuthStateChanged</span>(auth<span style='color:#3f8058;'>,</span> (user) <b>=&gt;</b> {
-                    <b><span style='color:#fdbc4b;'>if</span></b> (user) {
-                        userId <span style='color:#3f8058;'>=</span> user<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>uid</span><span style='color:#3f8058;'>;</span>
-                        <span style='color:#7a7c7d;'>// Display the full user ID (CTEC ID) as required for multi-user apps</span>
-                        <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'auth-status'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`Logged in. Your CTEC ID: </span><span style='color:#3daee9;'>${</span>userId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'>`</span><span style='color:#3f8058;'>;</span>
-                        <span style='color:#7a7c7d;'>// Start listening to battery data only after authentication is ready</span>
-                        <span style='color:#8e44ad;'>listenForBatteryUpdates</span>()<span style='color:#3f8058;'>;</span>
-                    } <b><span style='color:#fdbc4b;'>else</span></b> {
-                        userId <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'anonymous'</span><span style='color:#3f8058;'>;</span>
-                        <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'auth-status'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'Signed in anonymously. CTEC ID: anonymous'</span><span style='color:#3f8058;'>;</span>
+                // Listen for Auth State changes to get the User ID (CTEC ID)
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        // Display the full user ID (CTEC ID) as required for multi-user apps
+                        document.getElementById('auth-status').textContent = `Logged in. Your CTEC ID: ${userId}`;
+                        // Start listening to battery data only after authentication is ready
+                        listenForBatteryUpdates();
+                    } else {
+                        userId = 'anonymous';
+                        document.getElementById('auth-status').textContent = 'Signed in anonymously. CTEC ID: anonymous';
                     }
-                })<span style='color:#3f8058;'>;</span>
+                });
 
-            } <b><span style='color:#fdbc4b;'>catch</span></b> (error) {
-                <span style='color:#7f8c8d;'>console</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>error</span></i>(<span style='color:#f44f4f;'>&quot;Firebase setup failed:&quot;</span><span style='color:#3f8058;'>,</span> error)<span style='color:#3f8058;'>;</span>
-                <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'auth-status'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`ERROR: Firebase setup failed. Check console.`</span><span style='color:#3f8058;'>;</span>
+            } catch (error) {
+                console.error("Firebase setup failed:", error);
+                document.getElementById('auth-status').textContent = `ERROR: Firebase setup failed. Check console.`;
             }
         }
 
-        <span style='color:#7a7c7d;'>/**</span>
-<span style='color:#7a7c7d;'>         * Sets up a real-time listener for the battery collection.</span>
-<span style='color:#7a7c7d;'>         */</span>
-        <b>function</b> <span style='color:#8e44ad;'>listenForBatteryUpdates</span>() {
-            <b><span style='color:#fdbc4b;'>if</span></b> (<span style='color:#3f8058;'>!</span>db) <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+        /**
+         * Sets up a real-time listener for the battery collection.
+         */
+        function listenForBatteryUpdates() {
+            if (!db) return;
 
-            <b>const</b> q <span style='color:#3f8058;'>=</span> <span style='color:#8e44ad;'>query</span>(<span style='color:#8e44ad;'>collection</span>(db<span style='color:#3f8058;'>,</span> BATTERY_COLLECTION_PATH))<span style='color:#3f8058;'>;</span>
+            const q = query(collection(db, BATTERY_COLLECTION_PATH));
 
-            <span style='color:#8e44ad;'>onSnapshot</span>(q<span style='color:#3f8058;'>,</span> (snapshot) <b>=&gt;</b> {
-                <b>const</b> batteries <span style='color:#3f8058;'>=</span> []<span style='color:#3f8058;'>;</span>
-                snapshot<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>forEach</span>(doc <b>=&gt;</b> {
-                    batteries<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>push</span>({ <span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>:</span> doc<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>,</span> <span style='color:#3f8058;'>...</span>doc<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>data</span>() })<span style='color:#3f8058;'>;</span>
-                })<span style='color:#3f8058;'>;</span>
-                <span style='color:#8e44ad;'>renderBatteryList</span>(batteries)<span style='color:#3f8058;'>;</span>
-            }<span style='color:#3f8058;'>,</span> (error) <b>=&gt;</b> {
-                <span style='color:#7f8c8d;'>console</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>error</span></i>(<span style='color:#f44f4f;'>&quot;Error listening to battery updates:&quot;</span><span style='color:#3f8058;'>,</span> error)<span style='color:#3f8058;'>;</span>
-                <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'battery-list'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>innerHTML</span> <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`&lt;p class=&quot;text-red-600&quot;&gt;Failed to load data: </span><span style='color:#3daee9;'>${</span>error<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>message</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>&lt;/p&gt;`</span><span style='color:#3f8058;'>;</span>
-            })<span style='color:#3f8058;'>;</span>
+            onSnapshot(q, (snapshot) => {
+                const batteries = [];
+                snapshot.forEach(doc => {
+                    batteries.push({ id: doc.id, ...doc.data() });
+                });
+                renderBatteryList(batteries);
+            }, (error) => {
+                console.error("Error listening to battery updates:", error);
+                document.getElementById('battery-list').innerHTML = `<p class="text-red-600">Failed to load data: ${error.message}</p>`;
+            });
         }
 
-        <span style='color:#7a7c7d;'>/**</span>
-<span style='color:#7a7c7d;'>         * Handles the main transaction (Check Out or Check In). (Logic remains the same)</span>
-<span style='color:#7a7c7d;'>         */</span>
-        <b><i>async</i></b> <b>function</b> <span style='color:#8e44ad;'>handleTransaction</span>(type) {
-            <b>const</b> batteryId <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'batteryIdInput'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>value</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>trim</span>()<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>toUpperCase</span>()<span style='color:#3f8058;'>;</span>
-            <b>const</b> actionMsg <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'action-message'</span>)<span style='color:#3f8058;'>;</span>
-            actionMsg<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>classList</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>add</span>(<span style='color:#f44f4f;'>'hidden'</span>)<span style='color:#3f8058;'>;</span>
+        /**
+         * Handles the main transaction (Check Out or Check In). (Logic remains the same)
+         */
+        async function handleTransaction(type) {
+            const batteryId = document.getElementById('batteryIdInput').value.trim().toUpperCase();
+            const actionMsg = document.getElementById('action-message');
+            actionMsg.classList.add('hidden');
 
-            <b><span style='color:#fdbc4b;'>if</span></b> (<span style='color:#3f8058;'>!</span>batteryId) {
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#f44f4f;'>&quot;Please enter a Battery ID (barcode).&quot;</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-yellow-100 text-yellow-800'</span>)<span style='color:#3f8058;'>;</span>
-                <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+            if (!batteryId) {
+                showMessage("Please enter a Battery ID (barcode).", 'bg-yellow-100 text-yellow-800');
+                return;
             }
-            <b><span style='color:#fdbc4b;'>if</span></b> (userId <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'anonymous'</span> <span style='color:#3f8058;'>||</span> userId <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'unknown'</span>) {
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#f44f4f;'>&quot;Authentication not ready. Please wait.&quot;</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-red-100 text-red-800'</span>)<span style='color:#3f8058;'>;</span>
-                <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+            if (userId === 'anonymous' || userId === 'unknown') {
+                showMessage("Authentication not ready. Please wait.", 'bg-red-100 text-red-800');
+                return;
             }
 
-            <b>const</b> docRef <span style='color:#3f8058;'>=</span> <span style='color:#8e44ad;'>doc</span>(db<span style='color:#3f8058;'>,</span> BATTERY_COLLECTION_PATH<span style='color:#3f8058;'>,</span> batteryId)<span style='color:#3f8058;'>;</span>
+            const docRef = doc(db, BATTERY_COLLECTION_PATH, batteryId);
 
-            <b><span style='color:#fdbc4b;'>try</span></b> {
-                <b>const</b> docSnap <span style='color:#3f8058;'>=</span> <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>getDoc</span>(docRef)<span style='color:#3f8058;'>;</span>
+            try {
+                const docSnap = await getDoc(docRef);
 
-                <b><span style='color:#fdbc4b;'>if</span></b> (<span style='color:#3f8058;'>!</span>docSnap<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>exists</span>()) {
-                    <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`Battery ID </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> does not exist in the system.`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-red-100 text-red-800'</span>)<span style='color:#3f8058;'>;</span>
-                    <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+                if (!docSnap.exists()) {
+                    showMessage(`Battery ID ${batteryId} does not exist in the system.`, 'bg-red-100 text-red-800');
+                    return;
                 }
 
-                <b>const</b> batteryData <span style='color:#3f8058;'>=</span> docSnap<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>data</span>()<span style='color:#3f8058;'>;</span>
-                <b><i>let</i></b> updateData <span style='color:#3f8058;'>=</span> {}<span style='color:#3f8058;'>;</span>
-                <b><i>let</i></b> messageText <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>''</span><span style='color:#3f8058;'>;</span>
+                const batteryData = docSnap.data();
+                let updateData = {};
+                let messageText = '';
 
-                <b><span style='color:#fdbc4b;'>if</span></b> (type <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'checkout'</span>) {
-                    <b><span style='color:#fdbc4b;'>if</span></b> (batteryData<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>status</span> <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'Checked Out'</span>) {
-                        <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`ERROR: Battery </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> is already checked out by </span><span style='color:#3daee9;'>${</span>batteryData<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>checkedOutBy</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>.`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-red-100 text-red-800'</span>)<span style='color:#3f8058;'>;</span>
-                        <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+                if (type === 'checkout') {
+                    if (batteryData.status === 'Checked Out') {
+                        showMessage(`ERROR: Battery ${batteryId} is already checked out by ${batteryData.checkedOutBy}.`, 'bg-red-100 text-red-800');
+                        return;
                     }
 
-                    updateData <span style='color:#3f8058;'>=</span> {
-                        <span style='color:#2980b9;'>status</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Checked Out'</span><span style='color:#3f8058;'>,</span>
-                        <span style='color:#2980b9;'>checkedOutBy</span><span style='color:#3f8058;'>:</span> userId<span style='color:#3f8058;'>,</span>
-                        <span style='color:#2980b9;'>checkoutTime</span><span style='color:#3f8058;'>:</span> <span style='color:#8e44ad;'>serverTimestamp</span>()<span style='color:#3f8058;'>,</span>
-                        <span style='color:#2980b9;'>useCount</span><span style='color:#3f8058;'>:</span> (batteryData<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>useCount</span> <span style='color:#3f8058;'>||</span> <span style='color:#f67400;'>0</span>) <span style='color:#3f8058;'>+</span> <span style='color:#f67400;'>1</span><span style='color:#3f8058;'>,</span>
-                        <span style='color:#2980b9;'>history</span><span style='color:#3f8058;'>:</span> [<span style='color:#3f8058;'>...</span>(batteryData<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>history</span> <span style='color:#3f8058;'>||</span> [])<span style='color:#3f8058;'>,</span> {
-                            <span style='color:#2980b9;'>event</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'checkout'</span><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>userId</span><span style='color:#3f8058;'>:</span> userId<span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>timestamp</span><span style='color:#3f8058;'>:</span> <b>new</b> <span style='color:#7f8c8d;'>Date</span>()<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>toISOString</span>()
+                    updateData = {
+                        status: 'Checked Out',
+                        checkedOutBy: userId,
+                        checkoutTime: serverTimestamp(),
+                        useCount: (batteryData.useCount || 0) + 1,
+                        history: [...(batteryData.history || []), {
+                            event: 'checkout',
+                            userId: userId,
+                            timestamp: new Date().toISOString()
                         }]
-                    }<span style='color:#3f8058;'>;</span>
-                    messageText <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`SUCCESS: Battery </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> checked out by </span><span style='color:#3daee9;'>${</span>userId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'>.`</span><span style='color:#3f8058;'>;</span>
-                } <b><span style='color:#fdbc4b;'>else</span></b> <b><span style='color:#fdbc4b;'>if</span></b> (type <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'checkin'</span>) {
-                    <b><span style='color:#fdbc4b;'>if</span></b> (batteryData<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>status</span> <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'Available'</span>) {
-                        <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`ERROR: Battery </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> is already available.`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-yellow-100 text-yellow-800'</span>)<span style='color:#3f8058;'>;</span>
-                        <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+                    };
+                    messageText = `SUCCESS: Battery ${batteryId} checked out by ${userId}.`;
+                } else if (type === 'checkin') {
+                    if (batteryData.status === 'Available') {
+                        showMessage(`ERROR: Battery ${batteryId} is already available.`, 'bg-yellow-100 text-yellow-800');
+                        return;
                     }
 
-                    updateData <span style='color:#3f8058;'>=</span> {
-                        <span style='color:#2980b9;'>status</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Available'</span><span style='color:#3f8058;'>,</span>
-                        <span style='color:#2980b9;'>checkedOutBy</span><span style='color:#3f8058;'>:</span> <b>null</b><span style='color:#3f8058;'>,</span> <span style='color:#7a7c7d;'>// Clear the current user</span>
-                        <span style='color:#2980b9;'>checkoutTime</span><span style='color:#3f8058;'>:</span> <b>null</b><span style='color:#3f8058;'>,</span>
-                        <span style='color:#2980b9;'>chargeCount</span><span style='color:#3f8058;'>:</span> (batteryData<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>chargeCount</span> <span style='color:#3f8058;'>||</span> <span style='color:#f67400;'>0</span>) <span style='color:#3f8058;'>+</span> <span style='color:#f67400;'>1</span><span style='color:#3f8058;'>,</span>
-                        <span style='color:#2980b9;'>history</span><span style='color:#3f8058;'>:</span> [<span style='color:#3f8058;'>...</span>(batteryData<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>history</span> <span style='color:#3f8058;'>||</span> [])<span style='color:#3f8058;'>,</span> {
-                            <span style='color:#2980b9;'>event</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'checkin/charge'</span><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>userId</span><span style='color:#3f8058;'>:</span> userId<span style='color:#3f8058;'>,</span> <span style='color:#7a7c7d;'>// User who returned/charged it</span>
-                            <span style='color:#2980b9;'>timestamp</span><span style='color:#3f8058;'>:</span> <b>new</b> <span style='color:#7f8c8d;'>Date</span>()<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>toISOString</span>()
+                    updateData = {
+                        status: 'Available',
+                        checkedOutBy: null, // Clear the current user
+                        checkoutTime: null,
+                        chargeCount: (batteryData.chargeCount || 0) + 1,
+                        history: [...(batteryData.history || []), {
+                            event: 'checkin/charge',
+                            userId: userId, // User who returned/charged it
+                            timestamp: new Date().toISOString()
                         }]
-                    }<span style='color:#3f8058;'>;</span>
-                    messageText <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`SUCCESS: Battery </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> checked in and charged.`</span><span style='color:#3f8058;'>;</span>
+                    };
+                    messageText = `SUCCESS: Battery ${batteryId} checked in and charged.`;
                 }
 
-                <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>setDoc</span>(docRef<span style='color:#3f8058;'>,</span> updateData<span style='color:#3f8058;'>,</span> { <span style='color:#2980b9;'>merge</span><span style='color:#3f8058;'>:</span> <b>true</b> })<span style='color:#3f8058;'>;</span>
-                <span style='color:#8e44ad;'>showMessage</span>(messageText<span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-green-100 text-green-800'</span>)<span style='color:#3f8058;'>;</span>
-                <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'batteryIdInput'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>value</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>''</span><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>// Clear input on success</span>
+                await setDoc(docRef, updateData, { merge: true });
+                showMessage(messageText, 'bg-green-100 text-green-800');
+                document.getElementById('batteryIdInput').value = ''; // Clear input on success
 
-            } <b><span style='color:#fdbc4b;'>catch</span></b> (error) {
-                <span style='color:#7f8c8d;'>console</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>error</span></i>(<span style='color:#da4453;'>`Error processing </span><span style='color:#3daee9;'>${</span>type<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> for </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'>:`</span><span style='color:#3f8058;'>,</span> error)<span style='color:#3f8058;'>;</span>
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`Transaction failed: </span><span style='color:#3daee9;'>${</span>error<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>message</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-red-100 text-red-800'</span>)<span style='color:#3f8058;'>;</span>
+            } catch (error) {
+                console.error(`Error processing ${type} for ${batteryId}:`, error);
+                showMessage(`Transaction failed: ${error.message}`, 'bg-red-100 text-red-800');
             }
         }
 
-        <span style='color:#7a7c7d;'>/**</span>
-<span style='color:#7a7c7d;'>         * Renders the list of batteries on the dashboard, including the new Category field.</span>
-<span style='color:#7a7c7d;'>         */</span>
-        <b>function</b> <span style='color:#8e44ad;'>renderBatteryList</span>(batteries) {
-            <b>const</b> listContainer <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'battery-list'</span>)<span style='color:#3f8058;'>;</span>
-            listContainer<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>innerHTML</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>''</span><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>// Clear current list</span>
+        /**
+         * Renders the list of batteries on the dashboard, including the new Category field.
+         */
+        function renderBatteryList(batteries) {
+            const listContainer = document.getElementById('battery-list');
+            listContainer.innerHTML = ''; // Clear current list
 
-            <b><span style='color:#fdbc4b;'>if</span></b> (batteries<span style='color:#3f8058;'>.</span><i><span style='color:#2980b9;'>length</span></i> <span style='color:#3f8058;'>===</span> <span style='color:#f67400;'>0</span>) {
-                listContainer<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>innerHTML</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'&lt;p class=&quot;text-gray-500&quot;&gt;No batteries found. Use the &quot;New Battery Registration&quot; section above to add one.&lt;/p&gt;'</span><span style='color:#3f8058;'>;</span>
-                <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+            if (batteries.length === 0) {
+                listContainer.innerHTML = '<p class="text-gray-500">No batteries found. Use the "New Battery Registration" section above to add one.</p>';
+                return;
             }
 
-            <span style='color:#7a7c7d;'>// Sort by Battery ID for consistency</span>
-            batteries<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>sort</span>((a<span style='color:#3f8058;'>,</span> b) <b>=&gt;</b> a<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>localeCompare</span>(b<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>id</span>))<span style='color:#3f8058;'>;</span>
+            // Sort by Battery ID for consistency
+            batteries.sort((a, b) => a.id.localeCompare(b.id));
 
-            batteries<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>forEach</span>(battery <b>=&gt;</b> {
-                <b>const</b> statusClass <span style='color:#3f8058;'>=</span> battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>status</span> <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'Available'</span> <span style='color:#3f8058;'>?</span> <span style='color:#f44f4f;'>'status-available'</span> <span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'status-checked-out'</span><span style='color:#3f8058;'>;</span>
-                <b>const</b> statusIcon <span style='color:#3f8058;'>=</span> battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>status</span> <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'Available'</span> <span style='color:#3f8058;'>?</span> <span style='color:#f44f4f;'>'✅'</span> <span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'📦'</span><span style='color:#3f8058;'>;</span>
-                <b>const</b> checkedOutInfo <span style='color:#3f8058;'>=</span> battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>status</span> <span style='color:#3f8058;'>===</span> <span style='color:#f44f4f;'>'Checked Out'</span> <span style='color:#3f8058;'>?</span>
-                    <span style='color:#da4453;'>`&lt;span class=&quot;text-sm font-medium text-red-700 ml-2&quot;&gt;Checked out by: </span><span style='color:#3daee9;'>${</span>battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>checkedOutBy</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>&lt;/span&gt;`</span> <span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>''</span><span style='color:#3f8058;'>;</span>
-                <b>const</b> category <span style='color:#3f8058;'>=</span> battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>category</span> <span style='color:#3f8058;'>||</span> <span style='color:#f44f4f;'>'N/A'</span><span style='color:#3f8058;'>;</span> <span style='color:#7a7c7d;'>// Display N/A if category is missing</span>
+            batteries.forEach(battery => {
+                const statusClass = battery.status === 'Available' ? 'status-available' : 'status-checked-out';
+                const statusIcon = battery.status === 'Available' ? '✅' : '📦';
+                const checkedOutInfo = battery.status === 'Checked Out' ?
+                    `<span class="text-sm font-medium text-red-700 ml-2">Checked out by: ${battery.checkedOutBy}</span>` : '';
+                const category = battery.category || 'N/A'; // Display N/A if category is missing
 
-                <b>const</b> element <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>createElement</span></i>(<span style='color:#f44f4f;'>'div'</span>)<span style='color:#3f8058;'>;</span>
-                element<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>className</span> <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`p-4 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center </span><span style='color:#3daee9;'>${</span>statusClass<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> shadow-md`</span><span style='color:#3f8058;'>;</span>
-                element<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>innerHTML</span> <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`</span>
-<span style='color:#da4453;'>                    &lt;div class=&quot;mb-2 sm:mb-0 flex flex-col sm:flex-row sm:items-center&quot;&gt;</span>
-<span style='color:#da4453;'>                        &lt;span class=&quot;text-xl font-bold&quot;&gt;</span><span style='color:#3daee9;'>${</span>battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>id</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>&lt;/span&gt;</span>
-<span style='color:#da4453;'>                        &lt;span class=&quot;ml-0 sm:ml-4 text-sm px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-medium&quot;&gt;</span><span style='color:#3daee9;'>${</span>category<span style='color:#3daee9;'>}</span><span style='color:#da4453;'>&lt;/span&gt;</span>
-<span style='color:#da4453;'>                        &lt;span class=&quot;ml-0 sm:ml-4 font-semibold&quot;&gt;</span><span style='color:#3daee9;'>${</span>statusIcon<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> </span><span style='color:#3daee9;'>${</span>battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>status</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>&lt;/span&gt;</span>
-<span style='color:#da4453;'>                        </span><span style='color:#3daee9;'>${</span>checkedOutInfo<span style='color:#3daee9;'>}</span>
-<span style='color:#da4453;'>                    &lt;/div&gt;</span>
-<span style='color:#da4453;'>                    &lt;div class=&quot;text-sm text-gray-600 sm:text-right&quot;&gt;</span>
-<span style='color:#da4453;'>                        &lt;p&gt;Used: &lt;span class=&quot;font-bold&quot;&gt;</span><span style='color:#3daee9;'>${</span>battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>useCount</span> <span style='color:#3f8058;'>||</span> <span style='color:#f67400;'>0</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>&lt;/span&gt; times&lt;/p&gt;</span>
-<span style='color:#da4453;'>                        &lt;p&gt;Charged: &lt;span class=&quot;font-bold&quot;&gt;</span><span style='color:#3daee9;'>${</span>battery<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>chargeCount</span> <span style='color:#3f8058;'>||</span> <span style='color:#f67400;'>0</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>&lt;/span&gt; times&lt;/p&gt;</span>
-<span style='color:#da4453;'>                    &lt;/div&gt;</span>
-<span style='color:#da4453;'>                `</span><span style='color:#3f8058;'>;</span>
-                listContainer<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>appendChild</span>(element)<span style='color:#3f8058;'>;</span>
-            })<span style='color:#3f8058;'>;</span>
+                const element = document.createElement('div');
+                element.className = `p-4 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center ${statusClass} shadow-md`;
+                element.innerHTML = `
+                    <div class="mb-2 sm:mb-0 flex flex-col sm:flex-row sm:items-center">
+                        <span class="text-xl font-bold">${battery.id}</span>
+                        <span class="ml-0 sm:ml-4 text-sm px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-medium">${category}</span>
+                        <span class="ml-0 sm:ml-4 font-semibold">${statusIcon} ${battery.status}</span>
+                        ${checkedOutInfo}
+                    </div>
+                    <div class="text-sm text-gray-600 sm:text-right">
+                        <p>Used: <span class="font-bold">${battery.useCount || 0}</span> times</p>
+                        <p>Charged: <span class="font-bold">${battery.chargeCount || 0}</span> times</p>
+                    </div>
+                `;
+                listContainer.appendChild(element);
+            });
         }
 
-        <span style='color:#7a7c7d;'>/**</span>
-<span style='color:#7a7c7d;'>         * Displays a temporary message above the action buttons.</span>
-<span style='color:#7a7c7d;'>         */</span>
-        <b>function</b> <span style='color:#8e44ad;'>showMessage</span>(text<span style='color:#3f8058;'>,</span> className) {
-            <b>const</b> actionMsg <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'action-message'</span>)<span style='color:#3f8058;'>;</span>
-            actionMsg<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> text<span style='color:#3f8058;'>;</span>
-            actionMsg<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>className</span> <span style='color:#3f8058;'>=</span> <span style='color:#da4453;'>`text-center p-3 rounded-lg text-sm mb-4 </span><span style='color:#3daee9;'>${</span>className<span style='color:#3daee9;'>}</span><span style='color:#da4453;'>`</span><span style='color:#3f8058;'>;</span>
-            actionMsg<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>classList</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>remove</span>(<span style='color:#f44f4f;'>'hidden'</span>)<span style='color:#3f8058;'>;</span>
+        /**
+         * Displays a temporary message above the action buttons.
+         */
+        function showMessage(text, className) {
+            const actionMsg = document.getElementById('action-message');
+            actionMsg.textContent = text;
+            actionMsg.className = `text-center p-3 rounded-lg text-sm mb-4 ${className}`;
+            actionMsg.classList.remove('hidden');
 
-            <span style='color:#7a7c7d;'>// Hide message after 5 seconds</span>
-            <span style='color:#27ae60;'>setTimeout</span>(() <b>=&gt;</b> {
-                actionMsg<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>classList</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>add</span>(<span style='color:#f44f4f;'>'hidden'</span>)<span style='color:#3f8058;'>;</span>
-            }<span style='color:#3f8058;'>,</span> <span style='color:#f67400;'>5000</span>)<span style='color:#3f8058;'>;</span>
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                actionMsg.classList.add('hidden');
+            }, 5000);
         }
 
-        <span style='color:#7a7c7d;'>/**</span>
-<span style='color:#7a7c7d;'>         * Function to create a single new battery with a specific ID and Category.</span>
-<span style='color:#7a7c7d;'>         */</span>
-        <b><i>async</i></b> <b>function</b> <span style='color:#8e44ad;'>addNewBattery</span>() {
-            <b>const</b> batteryId <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'newBatteryId'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>value</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>trim</span>()<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>toUpperCase</span>()<span style='color:#3f8058;'>;</span>
-            <b>const</b> category <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'newBatteryCategory'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>value</span><span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>trim</span>()<span style='color:#3f8058;'>;</span>
-            <b>const</b> addButton <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'add-new-btn'</span>)<span style='color:#3f8058;'>;</span>
+        /**
+         * Function to create a single new battery with a specific ID and Category.
+         */
+        async function addNewBattery() {
+            const batteryId = document.getElementById('newBatteryId').value.trim().toUpperCase();
+            const category = document.getElementById('newBatteryCategory').value.trim();
+            const addButton = document.getElementById('add-new-btn');
 
-            <b><span style='color:#fdbc4b;'>if</span></b> (<span style='color:#3f8058;'>!</span>batteryId <span style='color:#3f8058;'>||</span> <span style='color:#3f8058;'>!</span>category) {
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#f44f4f;'>&quot;Please enter both a Battery ID and a Category.&quot;</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-yellow-100 text-yellow-800'</span>)<span style='color:#3f8058;'>;</span>
-                <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+            if (!batteryId || !category) {
+                showMessage("Please enter both a Battery ID and a Category.", 'bg-yellow-100 text-yellow-800');
+                return;
             }
 
-            addButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>disabled</span> <span style='color:#3f8058;'>=</span> <b>true</b><span style='color:#3f8058;'>;</span>
-            addButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'Registering...'</span><span style='color:#3f8058;'>;</span>
+            addButton.disabled = true;
+            addButton.textContent = 'Registering...';
 
-            <b><span style='color:#fdbc4b;'>try</span></b> {
-                <b>const</b> docRef <span style='color:#3f8058;'>=</span> <span style='color:#8e44ad;'>doc</span>(db<span style='color:#3f8058;'>,</span> BATTERY_COLLECTION_PATH<span style='color:#3f8058;'>,</span> batteryId)<span style='color:#3f8058;'>;</span>
-                <b>const</b> docSnap <span style='color:#3f8058;'>=</span> <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>getDoc</span>(docRef)<span style='color:#3f8058;'>;</span>
+            try {
+                const docRef = doc(db, BATTERY_COLLECTION_PATH, batteryId);
+                const docSnap = await getDoc(docRef);
 
-                <b><span style='color:#fdbc4b;'>if</span></b> (docSnap<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>exists</span>()) {
-                    <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`ERROR: Battery ID </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> already exists!`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-red-100 text-red-800'</span>)<span style='color:#3f8058;'>;</span>
-                    <b><span style='color:#fdbc4b;'>return</span></b><span style='color:#3f8058;'>;</span>
+                if (docSnap.exists()) {
+                    showMessage(`ERROR: Battery ID ${batteryId} already exists!`, 'bg-red-100 text-red-800');
+                    return;
                 }
 
-                <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>setDoc</span>(docRef<span style='color:#3f8058;'>,</span> {
-                    <span style='color:#2980b9;'>batteryId</span><span style='color:#3f8058;'>:</span> batteryId<span style='color:#3f8058;'>,</span>
-                    <span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>:</span> category<span style='color:#3f8058;'>,</span>
-                    <span style='color:#2980b9;'>status</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Available'</span><span style='color:#3f8058;'>,</span>
-                    <span style='color:#2980b9;'>checkedOutBy</span><span style='color:#3f8058;'>:</span> <b>null</b><span style='color:#3f8058;'>,</span>
-                    <span style='color:#2980b9;'>checkoutTime</span><span style='color:#3f8058;'>:</span> <b>null</b><span style='color:#3f8058;'>,</span>
-                    <span style='color:#2980b9;'>useCount</span><span style='color:#3f8058;'>:</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span>
-                    <span style='color:#2980b9;'>chargeCount</span><span style='color:#3f8058;'>:</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span>
-                    <span style='color:#2980b9;'>history</span><span style='color:#3f8058;'>:</span> [{ <span style='color:#2980b9;'>event</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'created'</span><span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>timestamp</span><span style='color:#3f8058;'>:</span> <b>new</b> <span style='color:#7f8c8d;'>Date</span>()<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>toISOString</span>()<span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>userId</span><span style='color:#3f8058;'>:</span> userId }]
-                })<span style='color:#3f8058;'>;</span>
+                await setDoc(docRef, {
+                    batteryId: batteryId,
+                    category: category,
+                    status: 'Available',
+                    checkedOutBy: null,
+                    checkoutTime: null,
+                    useCount: 0,
+                    chargeCount: 0,
+                    history: [{ event: 'created', timestamp: new Date().toISOString(), userId: userId }]
+                });
 
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`Battery </span><span style='color:#3daee9;'>${</span>batteryId<span style='color:#3daee9;'>}</span><span style='color:#da4453;'> (</span><span style='color:#3daee9;'>${</span>category<span style='color:#3daee9;'>}</span><span style='color:#da4453;'>) successfully registered!`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-green-100 text-green-800'</span>)<span style='color:#3f8058;'>;</span>
-                <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'newBatteryId'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>value</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>''</span><span style='color:#3f8058;'>;</span>
-                <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'newBatteryCategory'</span>)<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>value</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>''</span><span style='color:#3f8058;'>;</span>
+                showMessage(`Battery ${batteryId} (${category}) successfully registered!`, 'bg-green-100 text-green-800');
+                document.getElementById('newBatteryId').value = '';
+                document.getElementById('newBatteryCategory').value = '';
 
-            } <b><span style='color:#fdbc4b;'>catch</span></b> (error) {
-                <span style='color:#7f8c8d;'>console</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>error</span></i>(<span style='color:#f44f4f;'>&quot;Error adding new battery:&quot;</span><span style='color:#3f8058;'>,</span> error)<span style='color:#3f8058;'>;</span>
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`Registration failed: </span><span style='color:#3daee9;'>${</span>error<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>message</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-red-100 text-red-800'</span>)<span style='color:#3f8058;'>;</span>
-            } <b><span style='color:#fdbc4b;'>finally</span></b> {
-                addButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>disabled</span> <span style='color:#3f8058;'>=</span> <b>false</b><span style='color:#3f8058;'>;</span>
-                addButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'Register New Battery with Category'</span><span style='color:#3f8058;'>;</span>
+            } catch (error) {
+                console.error("Error adding new battery:", error);
+                showMessage(`Registration failed: ${error.message}`, 'bg-red-100 text-red-800');
+            } finally {
+                addButton.disabled = false;
+                addButton.textContent = 'Register New Battery with Category';
             }
         }
 
-        <span style='color:#7a7c7d;'>/**</span>
-<span style='color:#7a7c7d;'>         * Function to create initial set of batteries with categories.</span>
-<span style='color:#7a7c7d;'>         */</span>
-        <b><i>async</i></b> <b>function</b> <span style='color:#8e44ad;'>seedInitialData</span>() {
-            <b>const</b> seedButton <span style='color:#3f8058;'>=</span> <span style='color:#7f8c8d;'>document</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>getElementById</span></i>(<span style='color:#f44f4f;'>'seed-data-btn'</span>)<span style='color:#3f8058;'>;</span>
-            seedButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'Initializing...'</span><span style='color:#3f8058;'>;</span>
-            seedButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>disabled</span> <span style='color:#3f8058;'>=</span> <b>true</b><span style='color:#3f8058;'>;</span>
+        /**
+         * Function to create initial set of batteries with categories.
+         */
+        async function seedInitialData() {
+            const seedButton = document.getElementById('seed-data-btn');
+            seedButton.textContent = 'Initializing...';
+            seedButton.disabled = true;
 
-            <b>const</b> sampleBatteries <span style='color:#3f8058;'>=</span> [
-                { <span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'BATT-001'</span><span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Syma X5C Drone'</span> }<span style='color:#3f8058;'>,</span>
-                { <span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'BATT-002'</span><span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Syma X5C Drone'</span> }<span style='color:#3f8058;'>,</span>
-                { <span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'BATT-003'</span><span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'FPV Racer 3S'</span> }<span style='color:#3f8058;'>,</span>
-                { <span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'BATT-004'</span><span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Mobile Robot Drive'</span> }<span style='color:#3f8058;'>,</span>
-                { <span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'BATT-005'</span><span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Handheld Tool'</span> }
-            ]<span style='color:#3f8058;'>;</span>
+            const sampleBatteries = [
+                { id: 'BATT-001', category: 'Syma X5C Drone' },
+                { id: 'BATT-002', category: 'Syma X5C Drone' },
+                { id: 'BATT-003', category: 'FPV Racer 3S' },
+                { id: 'BATT-004', category: 'Mobile Robot Drive' },
+                { id: 'BATT-005', category: 'Handheld Tool' }
+            ];
 
-            <b><span style='color:#fdbc4b;'>try</span></b> {
-                <b><span style='color:#fdbc4b;'>for</span></b> (<b>const</b> item <b>of</b> sampleBatteries) {
-                    <b>const</b> docRef <span style='color:#3f8058;'>=</span> <span style='color:#8e44ad;'>doc</span>(db<span style='color:#3f8058;'>,</span> BATTERY_COLLECTION_PATH<span style='color:#3f8058;'>,</span> item<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>id</span>)<span style='color:#3f8058;'>;</span>
-                    <span style='color:#7a7c7d;'>// Check if document already exists</span>
-                    <b>const</b> docSnap <span style='color:#3f8058;'>=</span> <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>getDoc</span>(docRef)<span style='color:#3f8058;'>;</span>
+            try {
+                for (const item of sampleBatteries) {
+                    const docRef = doc(db, BATTERY_COLLECTION_PATH, item.id);
+                    // Check if document already exists
+                    const docSnap = await getDoc(docRef);
 
-                    <b><span style='color:#fdbc4b;'>if</span></b> (<span style='color:#3f8058;'>!</span>docSnap<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>exists</span>()) {
-                        <b><span style='color:#fdbc4b;'>await</span></b> <span style='color:#8e44ad;'>setDoc</span>(docRef<span style='color:#3f8058;'>,</span> {
-                            <span style='color:#2980b9;'>batteryId</span><span style='color:#3f8058;'>:</span> item<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>id</span><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>:</span> item<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>category</span><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>status</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'Available'</span><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>checkedOutBy</span><span style='color:#3f8058;'>:</span> <b>null</b><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>checkoutTime</span><span style='color:#3f8058;'>:</span> <b>null</b><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>useCount</span><span style='color:#3f8058;'>:</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>chargeCount</span><span style='color:#3f8058;'>:</span> <span style='color:#f67400;'>0</span><span style='color:#3f8058;'>,</span>
-                            <span style='color:#2980b9;'>history</span><span style='color:#3f8058;'>:</span> [{ <span style='color:#2980b9;'>event</span><span style='color:#3f8058;'>:</span> <span style='color:#f44f4f;'>'created'</span><span style='color:#3f8058;'>,</span> <span style='color:#2980b9;'>timestamp</span><span style='color:#3f8058;'>:</span> <b>new</b> <span style='color:#7f8c8d;'>Date</span>()<span style='color:#3f8058;'>.</span><span style='color:#8e44ad;'>toISOString</span>() }]
-                        })<span style='color:#3f8058;'>;</span>
+                    if (!docSnap.exists()) {
+                        await setDoc(docRef, {
+                            batteryId: item.id,
+                            category: item.category,
+                            status: 'Available',
+                            checkedOutBy: null,
+                            checkoutTime: null,
+                            useCount: 0,
+                            chargeCount: 0,
+                            history: [{ event: 'created', timestamp: new Date().toISOString() }]
+                        });
                     }
                 }
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`Successfully created </span><span style='color:#3daee9;'>${</span>sampleBatteries<span style='color:#3f8058;'>.</span><i><span style='color:#2980b9;'>length</span></i><span style='color:#3daee9;'>}</span><span style='color:#da4453;'> starting batteries with categories!`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-blue-100 text-blue-800'</span>)<span style='color:#3f8058;'>;</span>
+                showMessage(`Successfully created ${sampleBatteries.length} starting batteries with categories!`, 'bg-blue-100 text-blue-800');
 
-            } <b><span style='color:#fdbc4b;'>catch</span></b> (error) {
-                <span style='color:#7f8c8d;'>console</span><span style='color:#3f8058;'>.</span><i><span style='color:#8e44ad;'>error</span></i>(<span style='color:#f44f4f;'>&quot;Error seeding data:&quot;</span><span style='color:#3f8058;'>,</span> error)<span style='color:#3f8058;'>;</span>
-                <span style='color:#8e44ad;'>showMessage</span>(<span style='color:#da4453;'>`Data initialization failed: </span><span style='color:#3daee9;'>${</span>error<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>message</span><span style='color:#3daee9;'>}</span><span style='color:#da4453;'>`</span><span style='color:#3f8058;'>,</span> <span style='color:#f44f4f;'>'bg-red-100 text-red-800'</span>)<span style='color:#3f8058;'>;</span>
-            } <b><span style='color:#fdbc4b;'>finally</span></b> {
-                seedButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>textContent</span> <span style='color:#3f8058;'>=</span> <span style='color:#f44f4f;'>'Initialize Fleet with Sample Data (If empty)'</span><span style='color:#3f8058;'>;</span>
-                seedButton<span style='color:#3f8058;'>.</span><span style='color:#2980b9;'>disabled</span> <span style='color:#3f8058;'>=</span> <b>false</b><span style='color:#3f8058;'>;</span>
+            } catch (error) {
+                console.error("Error seeding data:", error);
+                showMessage(`Data initialization failed: ${error.message}`, 'bg-red-100 text-red-800');
+            } finally {
+                seedButton.textContent = 'Initialize Fleet with Sample Data (If empty)';
+                seedButton.disabled = false;
             }
         }
 
-        <span style='color:#7a7c7d;'>// Start the application setup</span>
-        <span style='color:#8e44ad;'>setupFirebase</span>()<span style='color:#3f8058;'>;</span>
-    <span style='color:#2980b9;'>&lt;/</span><b>script</b><span style='color:#2980b9;'>&gt;</span>
-<span style='color:#2980b9;'>&lt;/</span><b>body</b><span style='color:#2980b9;'>&gt;</span>
-<span style='color:#2980b9;'>&lt;/</span><b>html</b><span style='color:#2980b9;'>&gt;</span>
-</pre>
+        // Start the application setup
+        setupFirebase();
+    </script>
 </body>
 </html>
