@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battery Management & Checkout System</title>
-    <!-- Load Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load html5-qrcode library for camera scanning -->
     <script src="https://unpkg.com/html5-qrcode"></script>
     <style>
         /* Custom styles for better aesthetics and readability */
@@ -28,17 +26,14 @@
             background-color: #fee2e2; /* Red light */
             color: #991b1b; /* Red dark */
         }
-        /* Mobile-first focus for large text input */
-        #batteryIdInput {
-            font-size: 1.5rem;
-            padding: 0.75rem;
-            text-align: center;
-        }
         /* Style for the QR/Barcode Reader container */
         #reader {
             width: 100%;
             max-width: 400px;
             margin: 1rem auto;
+            border: 2px dashed #d1d5db;
+            border-radius: 0.5rem;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -46,51 +41,56 @@
     <div class="max-w-4xl mx-auto">
         <header class="text-center mb-8">
             <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Battery Checkout System</h1>
-            <p id="auth-status" class="text-lg text-gray-600">Initializing...</p>
+            <p id="auth-status" class="text-lg text-gray-600">Initializing Firebase...</p>
         </header>
 
-        <!-- 1. Main Transaction Card (Simulates Scanner Interface) -->
         <div class="card mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
                 <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2zM15.5 10.5a.5.5 0 11-1 0 .5.5 0 011 0z"></path></svg>
-                Scan/Entry Interface
+                Transaction Interface
             </h2>
-
-            <input type="text" id="batteryIdInput" placeholder="Enter ID (or Scan via USB Scanner + Enter)"
-                   class="w-full border-2 border-indigo-300 focus:border-indigo-500 rounded-lg mb-4 transition duration-150 ease-in-out"
-                   onkeydown="if(event.key === 'Enter') { handleTransaction('checkout'); }">
 
             <div id="action-message" class="text-center p-3 rounded-lg text-sm mb-4 hidden"></div>
 
-            <!-- Scanner Control Button -->
+            <label for="ctecIdInput" class="block text-gray-700 font-semibold mb-1">1. Enter or Scan Person ID (CTEC ID)</label>
+            <input type="text" id="ctecIdInput" placeholder="Enter CTEC ID (e.g., CTEC-101)"
+                   class="w-full border-2 border-yellow-300 focus:border-yellow-500 rounded-lg p-3 mb-4 transition duration-150 ease-in-out">
+
+            <label for="batteryIdInput" class="block text-gray-700 font-semibold mb-1">2. Enter or Scan Battery ID</label>
+            <input type="text" id="batteryIdInput" placeholder="Enter Battery ID (e.g., BATT-001) then ENTER"
+                   class="w-full border-2 border-indigo-300 focus:border-indigo-500 rounded-lg p-3 mb-4 transition duration-150 ease-in-out"
+                   onkeydown="if(event.key === 'Enter') { handleTransaction('checkout'); }">
+
+            <div class="flex items-center justify-between mb-4 bg-gray-100 p-3 rounded-lg border">
+                <span class="font-medium text-gray-700">Scan Target: <span id="scanTargetDisplay" class="font-bold text-indigo-600">CTEC ID</span></span>
+                <button onclick="toggleScanTarget()" id="scan-target-toggle-btn"
+                        class="px-4 py-2 bg-gray-300 text-gray-800 font-bold rounded-lg hover:bg-gray-400 transition duration-150 ease-in-out text-sm">
+                    Switch Target
+                </button>
+            </div>
+
             <button onclick="toggleScanner()" id="scanner-toggle-btn"
                     class="w-full px-6 py-3 mb-4 bg-yellow-500 text-white font-bold rounded-lg hover:bg-yellow-600 transition duration-150 ease-in-out disabled:opacity-50">
-                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10m16-4v4m0-10V7M7 4h10M7 20h10M5 7h2m0 10H5m0-10h2m0 0v2m0 0v-2m10 2v-2m0 2h2m0 0h-2m-10 0v2m0 0v-2m0 0h2m0 0h-2m10 0v2m0 0v-2"></path></svg>
                 Start Camera Scan
             </button>
 
-            <!-- Scanner Video Feed Container -->
             <div id="reader"></div>
 
-            <!-- Check Out / Check In Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex flex-col sm:flex-row gap-4 mt-4">
                 <button onclick="handleTransaction('checkout')" id="checkout-btn"
-                        class="flex-1 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out disabled:opacity-50">
-                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1m5-10v-1a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                        class="flex-1 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-150 ease-in-out">
                     Check Out
                 </button>
                 <button onclick="handleTransaction('checkin')" id="checkin-btn"
-                        class="flex-1 px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 ease-in-out disabled:opacity-50">
-                    <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m5 3h6V7a2 2 0 00-2-2H7a2 2 0 00-2 2v4"></path></svg>
+                        class="flex-1 px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 ease-in-out">
                     Check In / Charge
                 </button>
             </div>
         </div>
 
-        <!-- 2. Add New Battery Card (Setup/Initialization) -->
         <div class="card mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <svg class="w-6 h-6 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 New Battery Registration
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
@@ -100,19 +100,18 @@
                        class="col-span-2 border border-gray-300 rounded-lg p-3">
             </div>
             <button onclick="addNewBattery()" id="add-new-btn"
-                    class="w-full px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition duration-150 ease-in-out disabled:opacity-50 text-sm">
-                Register New Battery with Category
+                    class="w-full px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition duration-150 ease-in-out text-sm">
+                Register New Battery
             </button>
             <button id="seed-data-btn" onclick="seedInitialData()"
                     class="mt-4 w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out text-sm">
-                Initialize Fleet with Sample Data (If empty)
+                Initialize with Sample Data (If empty)
             </button>
         </div>
 
-        <!-- 3. Battery Status Dashboard -->
         <div class="card mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/24/24/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0-4c-1.657 0-3 .895-3 2s1.343 2 3 2m-3 3h6M3 6h18M3 10h18M3 14h18M3 18h18"></path></svg>
+                <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0-4c-1.657 0-3 .895-3 2s1.343 2 3 2m-3 3h6M3 6h18M3 10h18M3 14h18M3 18h18"></path></svg>
                 Battery Fleet Status
             </h2>
 
@@ -122,121 +121,160 @@
         </div>
     </div>
 
-    <!-- Firebase and Scanning Logic -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, onSnapshot, collection, query, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- IMPORTANT ---
+        // For this to work, you MUST have your Firebase config here.
+        // It should look something like this:
+        const firebaseConfig = {
+             apiKey: "AIzaSyAIAtKsd9RRfA9qNv_0Ti7eTwo83CgH89k",
+             authDomain: "battery-tracker-project.firebaseapp.com",
+             projectId: "battery-tracker-project",
+             storageBucket: "battery-tracker-project.firebasestorage.app",
+             messagingSenderId: "715715884551",
+             appId: "1:715715884551:web:f15a3de27ebec047281ca2",
+             measurementId: "G-N5WPSEZYWB"
+        };
+
+        <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAIAtKsd9RRfA9qNv_0Ti7eTwo83CgH89k",
+    authDomain: "battery-tracker-project.firebaseapp.com",
+    projectId: "battery-tracker-project",
+    storageBucket: "battery-tracker-project.firebasestorage.app",
+    messagingSenderId: "715715884551",
+    appId: "1:715715884551:web:f15a3de27ebec047281ca2",
+    measurementId: "G-N5WPSEZYWB"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+    
+        // --- END IMPORTANT ---
+
 
         // Global Firebase and App variables
         let app;
         let db;
         let auth;
-        let userId = 'unknown';
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        let authenticatedUserId = 'unknown';
+        const appId = firebaseConfig.appId || 'default-app-id';
         const BATTERY_COLLECTION_PATH = `/artifacts/${appId}/public/data/batteries`;
 
         // Scanning variables
         let html5QrCodeScanner = null;
         let isScannerRunning = false;
+        let currentScanTarget = 'CTEC_ID';
 
         // Expose functions globally for HTML click handlers
         window.handleTransaction = handleTransaction;
         window.seedInitialData = seedInitialData;
         window.addNewBattery = addNewBattery;
-        window.toggleScanner = toggleScanner; // New scanner function
-
-        // Set Firestore debug logging
-        setLogLevel('debug');
-
+        window.toggleScanner = toggleScanner;
+        window.toggleScanTarget = toggleScanTarget;
 
         /**
          * Initializes Firebase and authenticates the user.
          */
         async function setupFirebase() {
             try {
-                if (Object.keys(firebaseConfig).length === 0) {
-                    // Check if config is genuinely missing
-                    document.getElementById('auth-status').textContent = `CRITICAL ERROR: Firebase config data is missing. Cloud connection will fail.`;
-                    console.error("CRITICAL ERROR: Firebase configuration (__firebase_config) is not defined or is empty.");
-                    return; // Stop initialization if config is missing
+                if (!firebaseConfig.apiKey) {
+                    document.getElementById('auth-status').innerHTML = `<span class="text-red-600 font-bold">CRITICAL ERROR: Firebase config is missing or incomplete in the script.</span>`;
+                    console.error("CRITICAL ERROR: Firebase configuration is not defined or is empty.");
+                    return;
                 }
 
                 app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
                 auth = getAuth(app);
 
-                // Authentication using custom token or anonymously
-                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
+                await signInAnonymously(auth);
 
-                // Listen for Auth State changes to get the User ID (CTEC ID)
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
-                        userId = user.uid;
-                        document.getElementById('auth-status').textContent = `Logged in. Your CTEC ID: ${userId}`;
-                        listenForBatteryUpdates();
+                        authenticatedUserId = user.uid;
+                        document.getElementById('auth-status').textContent = `System is ready for transactions.`;
+                        listenForBatteryUpdates(); // This will now work
                     } else {
-                        userId = 'anonymous';
-                        document.getElementById('auth-status').textContent = 'Signed in anonymously. CTEC ID: anonymous';
+                        authenticatedUserId = 'anonymous';
+                        document.getElementById('auth-status').textContent = 'Could not sign in. Functionality limited.';
                     }
                 });
 
             } catch (error) {
-                console.error("Firebase setup failed during initialization or auth:", error);
+                console.error("Firebase setup failed:", error);
                 document.getElementById('auth-status').textContent = `FATAL ERROR: Firebase connection failed. See console for details.`;
             }
         }
 
         /**
-         * Sets up a real-time listener for the battery collection.
+         * Listens for real-time updates to the battery collection and re-renders the list.
+         * THIS WAS THE MISSING FUNCTION
          */
         function listenForBatteryUpdates() {
             if (!db) return;
-
             const q = query(collection(db, BATTERY_COLLECTION_PATH));
 
-            onSnapshot(q, (snapshot) => {
+            onSnapshot(q, (querySnapshot) => {
                 const batteries = [];
-                snapshot.forEach(doc => {
+                querySnapshot.forEach((doc) => {
                     batteries.push({ id: doc.id, ...doc.data() });
                 });
                 renderBatteryList(batteries);
             }, (error) => {
-                console.error("Error listening to battery updates:", error);
-                document.getElementById('battery-list').innerHTML = `<p class="text-red-600">Failed to load data: ${error.message}</p>`;
+                console.error("Error listening for battery updates:", error);
+                document.getElementById('battery-list').innerHTML = `<p class="text-red-500">Error loading battery data: ${error.message}</p>`;
             });
         }
 
-        /**
-         * Handles the main transaction (Check Out or Check In).
-         */
-        async function handleTransaction(type, scannedId = null) {
-            const batteryId = scannedId || document.getElementById('batteryIdInput').value.trim().toUpperCase();
-            const actionMsg = document.getElementById('action-message');
-            actionMsg.classList.add('hidden');
-
-            if (isScannerRunning) {
-                await stopScanner();
+        function toggleScanTarget() {
+            const display = document.getElementById('scanTargetDisplay');
+            if (currentScanTarget === 'CTEC_ID') {
+                currentScanTarget = 'BATTERY_ID';
+                display.textContent = 'BATTERY ID';
+                display.classList.remove('text-indigo-600');
+                display.classList.add('text-green-600');
+            } else {
+                currentScanTarget = 'CTEC_ID';
+                display.textContent = 'CTEC ID';
+                display.classList.remove('text-green-600');
+                display.classList.add('text-indigo-600');
             }
+            showMessage(`Scan target switched to ${currentScanTarget}.`, 'bg-blue-100 text-blue-800');
+        }
 
-            if (!batteryId) {
-                showMessage("Please enter a Battery ID (barcode).", 'bg-yellow-100 text-yellow-800');
+        async function handleTransaction(type) {
+            const personId = document.getElementById('ctecIdInput').value.trim().toUpperCase();
+            const batteryId = document.getElementById('batteryIdInput').value.trim().toUpperCase();
+
+            if (type === 'checkout' && !personId) {
+                showMessage("CRITICAL: Please enter the **Person ID** for checkout.", 'bg-red-100 text-red-800');
                 return;
             }
-            if (userId === 'anonymous' || userId === 'unknown') {
-                showMessage("Authentication not ready. Please wait.", 'bg-red-100 text-red-800');
+            if (!batteryId) {
+                showMessage("Please enter the **Battery ID**.", 'bg-yellow-100 text-yellow-800');
                 return;
             }
             if (!db) {
-                showMessage("Database not initialized. Cannot perform transaction.", 'bg-red-100 text-red-800');
+                showMessage("Database not initialized.", 'bg-red-100 text-red-800');
                 return;
+            }
+
+            if (isScannerRunning) {
+                await stopScanner();
             }
 
             const docRef = doc(db, BATTERY_COLLECTION_PATH, batteryId);
@@ -245,7 +283,7 @@
                 const docSnap = await getDoc(docRef);
 
                 if (!docSnap.exists()) {
-                    showMessage(`Battery ID ${batteryId} does not exist in the system.`, 'bg-red-100 text-red-800');
+                    showMessage(`Battery ID '${batteryId}' does not exist.`, 'bg-red-100 text-red-800');
                     return;
                 }
 
@@ -258,79 +296,78 @@
                         showMessage(`ERROR: Battery ${batteryId} is already checked out by ${batteryData.checkedOutBy}.`, 'bg-red-100 text-red-800');
                         return;
                     }
-
                     updateData = {
                         status: 'Checked Out',
-                        checkedOutBy: userId,
+                        checkedOutBy: personId,
                         checkoutTime: serverTimestamp(),
                         useCount: (batteryData.useCount || 0) + 1,
                         history: [...(batteryData.history || []), {
-                            event: 'checkout',
-                            userId: userId,
-                            timestamp: new Date().toISOString()
+                            event: 'checkout', personId: personId, timestamp: new Date().toISOString()
                         }]
                     };
-                    messageText = `SUCCESS: Battery ${batteryId} checked out by ${userId}.`;
+                    messageText = `SUCCESS: Battery ${batteryId} checked out by **${personId}**.`;
                 } else if (type === 'checkin') {
                     if (batteryData.status === 'Available') {
-                        showMessage(`ERROR: Battery ${batteryId} is already available.`, 'bg-yellow-100 text-yellow-800');
+                        showMessage(`INFO: Battery ${batteryId} is already available.`, 'bg-yellow-100 text-yellow-800');
                         return;
                     }
-
+                    const returningPerson = personId || 'Operator';
                     updateData = {
                         status: 'Available',
                         checkedOutBy: null,
                         checkoutTime: null,
                         chargeCount: (batteryData.chargeCount || 0) + 1,
                         history: [...(batteryData.history || []), {
-                            event: 'checkin/charge',
-                            userId: userId,
-                            timestamp: new Date().toISOString()
+                            event: 'checkin', personId: returningPerson, timestamp: new Date().toISOString()
                         }]
                     };
-                    messageText = `SUCCESS: Battery ${batteryId} checked in and charged.`;
+                    messageText = `SUCCESS: Battery ${batteryId} checked in by **${returningPerson}**.`;
                 }
 
                 await setDoc(docRef, updateData, { merge: true });
                 showMessage(messageText, 'bg-green-100 text-green-800');
                 document.getElementById('batteryIdInput').value = '';
-
             } catch (error) {
                 console.error(`Error processing ${type} for ${batteryId}:`, error);
                 showMessage(`Transaction failed: ${error.message}`, 'bg-red-100 text-red-800');
             }
         }
 
-        /**
-         * Camera Scanning Logic
-         */
         function onScanSuccess(decodedText, decodedResult) {
-            console.log(`Scan successful: ${decodedText}`);
-            // Automatically handle the transaction for the scanned ID
-            handleTransaction('checkout', decodedText.toUpperCase());
-            // Stop scanner after a successful scan
-            stopScanner();
+            const capitalizedId = decodedText.trim().toUpperCase();
+
+            if (currentScanTarget === 'CTEC_ID') {
+                document.getElementById('ctecIdInput').value = capitalizedId;
+                showMessage(`Person ID **${capitalizedId}** scanned. Now scan Battery ID.`, 'bg-blue-100 text-blue-800');
+                toggleScanTarget();
+            } else {
+                document.getElementById('batteryIdInput').value = capitalizedId;
+                const personId = document.getElementById('ctecIdInput').value.trim().toUpperCase();
+                if (personId) {
+                     handleTransaction('checkout');
+                } else {
+                    showMessage(`Battery ID **${capitalizedId}** scanned. Please scan Person ID to complete checkout.`, 'bg-yellow-100 text-yellow-800');
+                }
+            }
         }
 
         async function startScanner() {
             const scannerBtn = document.getElementById('scanner-toggle-btn');
             scannerBtn.disabled = true;
 
-            html5QrCodeScanner = new Html5QrcodeScanner(
-                "reader",
-                { fps: 10, qrbox: { width: 250, height: 250 }, rememberLastUsedCamera: true },
-                /* verbose= */ false
-            );
+            html5QrCodeScanner = new Html5Qrcode("reader");
 
             try {
-                await html5QrCodeScanner.render(onScanSuccess, (errorMessage) => {
-                    // console.error("Scanner Error:", errorMessage); // Keep scanner error quiet unless critical
-                });
+                await html5QrCodeScanner.start(
+                    { facingMode: "environment" },
+                    { fps: 10, qrbox: { width: 250, height: 250 } },
+                    onScanSuccess,
+                    (errorMessage) => { /* ignore errors */ }
+                );
                 isScannerRunning = true;
                 scannerBtn.textContent = 'Stop Camera Scan';
-                scannerBtn.classList.remove('bg-yellow-500');
-                scannerBtn.classList.add('bg-red-500');
-                showMessage("Camera active. Point it at a battery barcode/QR code.", 'bg-yellow-100 text-yellow-800');
+                scannerBtn.classList.replace('bg-yellow-500', 'bg-red-500');
+                showMessage(`Camera active. Scanning for: **${currentScanTarget}**.`, 'bg-yellow-100 text-yellow-800');
             } catch (error) {
                 console.error("Failed to start camera scan:", error);
                 showMessage("ERROR: Could not start camera. Check permissions.", 'bg-red-100 text-red-800');
@@ -343,12 +380,11 @@
             const scannerBtn = document.getElementById('scanner-toggle-btn');
             if (html5QrCodeScanner && isScannerRunning) {
                 try {
-                    await html5QrCodeScanner.clear();
+                    await html5QrCodeScanner.stop();
                     isScannerRunning = false;
                     scannerBtn.textContent = 'Start Camera Scan';
-                    scannerBtn.classList.remove('bg-red-500');
-                    scannerBtn.classList.add('bg-yellow-500');
-                    document.getElementById('reader').innerHTML = ''; // Clear video element
+                    scannerBtn.classList.replace('bg-red-500', 'bg-yellow-500');
+                    document.getElementById('reader').innerHTML = '';
                 } catch (error) {
                     console.error("Error stopping scanner:", error);
                 }
@@ -363,15 +399,12 @@
             }
         }
 
-        /**
-         * Renders the list of batteries on the dashboard. (Rendering logic unchanged)
-         */
         function renderBatteryList(batteries) {
             const listContainer = document.getElementById('battery-list');
             listContainer.innerHTML = '';
 
             if (batteries.length === 0) {
-                listContainer.innerHTML = '<p class="text-gray-500">No batteries found. Use the "New Battery Registration" section above to add one.</p>';
+                listContainer.innerHTML = '<p class="text-gray-500">No batteries found. Use the registration section to add one.</p>';
                 return;
             }
 
@@ -381,45 +414,38 @@
                 const statusClass = battery.status === 'Available' ? 'status-available' : 'status-checked-out';
                 const statusIcon = battery.status === 'Available' ? '✅' : '📦';
                 const checkedOutInfo = battery.status === 'Checked Out' ?
-                    `<span class="text-sm font-medium text-red-700 ml-2">Checked out by: ${battery.checkedOutBy}</span>` : '';
+                    `<span class="text-sm font-medium text-red-700 ml-2">by: ${battery.checkedOutBy}</span>` : '';
                 const category = battery.category || 'N/A';
 
                 const element = document.createElement('div');
-                element.className = `p-4 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center ${statusClass} shadow-md`;
+                element.className = `p-4 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center ${statusClass} shadow-sm`;
                 element.innerHTML = `
-                    <div class="mb-2 sm:mb-0 flex flex-col sm:flex-row sm:items-center">
-                        <span class="text-xl font-bold">${battery.id}</span>
-                        <span class="ml-0 sm:ml-4 text-sm px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-medium">${category}</span>
-                        <span class="ml-0 sm:ml-4 font-semibold">${statusIcon} ${battery.status}</span>
+                    <div class="mb-2 sm:mb-0 flex items-center flex-wrap">
+                        <span class="text-xl font-bold mr-3">${battery.id}</span>
+                        <span class="mr-3 text-sm px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-medium">${category}</span>
+                        <span class="font-semibold">${statusIcon} ${battery.status}</span>
                         ${checkedOutInfo}
                     </div>
                     <div class="text-sm text-gray-600 sm:text-right">
-                        <p>Used: <span class="font-bold">${battery.useCount || 0}</span> times</p>
-                        <p>Charged: <span class="font-bold">${battery.chargeCount || 0}</span> times</p>
+                        <span class="mr-3">Used: <b class="font-bold">${battery.useCount || 0}</b></span>
+                        <span>Charged: <b class="font-bold">${battery.chargeCount || 0}</b></span>
                     </div>
                 `;
                 listContainer.appendChild(element);
             });
         }
 
-        /**
-         * Displays a temporary message above the action buttons. (Unchanged)
-         */
         function showMessage(text, className) {
             const actionMsg = document.getElementById('action-message');
-            actionMsg.textContent = text;
+            actionMsg.innerHTML = text;
             actionMsg.className = `text-center p-3 rounded-lg text-sm mb-4 ${className}`;
             actionMsg.classList.remove('hidden');
 
-            // Hide message after 5 seconds
             setTimeout(() => {
                 actionMsg.classList.add('hidden');
             }, 5000);
         }
 
-        /**
-         * Function to create a single new battery. (Unchanged)
-         */
         async function addNewBattery() {
             const batteryId = document.getElementById('newBatteryId').value.trim().toUpperCase();
             const category = document.getElementById('newBatteryCategory').value.trim();
@@ -432,11 +458,6 @@
 
             addButton.disabled = true;
             addButton.textContent = 'Registering...';
-
-            if (!db) {
-                showMessage("Database not initialized. Cannot register battery.", 'bg-red-100 text-red-800');
-                return;
-            }
 
             try {
                 const docRef = doc(db, BATTERY_COLLECTION_PATH, batteryId);
@@ -455,25 +476,21 @@
                     checkoutTime: null,
                     useCount: 0,
                     chargeCount: 0,
-                    history: [{ event: 'created', timestamp: new Date().toISOString(), userId: userId }]
+                    history: [{ event: 'created', timestamp: new Date().toISOString() }]
                 });
 
                 showMessage(`Battery ${batteryId} (${category}) successfully registered!`, 'bg-green-100 text-green-800');
                 document.getElementById('newBatteryId').value = '';
                 document.getElementById('newBatteryCategory').value = '';
-
             } catch (error) {
                 console.error("Error adding new battery:", error);
                 showMessage(`Registration failed: ${error.message}`, 'bg-red-100 text-red-800');
             } finally {
                 addButton.disabled = false;
-                addButton.textContent = 'Register New Battery with Category';
+                addButton.textContent = 'Register New Battery';
             }
         }
 
-        /**
-         * Function to create initial set of batteries. (Unchanged)
-         */
         async function seedInitialData() {
             const seedButton = document.getElementById('seed-data-btn');
             seedButton.textContent = 'Initializing...';
@@ -487,14 +504,8 @@
                 { id: 'BATT-005', category: 'Handheld Tool' }
             ];
 
-            if (!db) {
-                showMessage("Database not initialized. Cannot seed data.", 'bg-red-100 text-red-800');
-                seedButton.textContent = 'Initialize Fleet with Sample Data (If empty)';
-                seedButton.disabled = false;
-                return;
-            }
-
             try {
+                let createdCount = 0;
                 for (const item of sampleBatteries) {
                     const docRef = doc(db, BATTERY_COLLECTION_PATH, item.id);
                     const docSnap = await getDoc(docRef);
@@ -510,15 +521,19 @@
                             chargeCount: 0,
                             history: [{ event: 'created', timestamp: new Date().toISOString() }]
                         });
+                        createdCount++;
                     }
                 }
-                showMessage(`Successfully created ${sampleBatteries.length} starting batteries with categories!`, 'bg-blue-100 text-blue-800');
-
+                if(createdCount > 0) {
+                   showMessage(`Successfully created ${createdCount} sample batteries!`, 'bg-blue-100 text-blue-800');
+                } else {
+                    showMessage('Sample batteries already exist.', 'bg-yellow-100 text-yellow-800');
+                }
             } catch (error) {
                 console.error("Error seeding data:", error);
                 showMessage(`Data initialization failed: ${error.message}`, 'bg-red-100 text-red-800');
             } finally {
-                seedButton.textContent = 'Initialize Fleet with Sample Data (If empty)';
+                seedButton.textContent = 'Initialize with Sample Data (If empty)';
                 seedButton.disabled = false;
             }
         }
