@@ -48,8 +48,10 @@
                 Scan Interface (Enter Battery Barcode)
             </h2>
 
+            <!-- ADDED: onkeydown event to trigger checkout on Enter key press (scanner simulation) -->
             <input type="text" id="batteryIdInput" placeholder="Enter Battery ID (e.g., BATT-001)"
-                   class="w-full border-2 border-indigo-300 focus:border-indigo-500 rounded-lg mb-4 transition duration-150 ease-in-out">
+                   class="w-full border-2 border-indigo-300 focus:border-indigo-500 rounded-lg mb-4 transition duration-150 ease-in-out"
+                   onkeydown="if(event.key === 'Enter') { handleTransaction('checkout'); }">
 
             <div id="action-message" class="text-center p-3 rounded-lg text-sm mb-4 hidden"></div>
 
@@ -164,7 +166,8 @@
 
             } catch (error) {
                 console.error("Firebase setup failed:", error);
-                document.getElementById('auth-status').textContent = `ERROR: Firebase setup failed. Check console.`;
+                // Clearer message for setup failures
+                document.getElementById('auth-status').textContent = `ERROR: Firebase setup failed (see console for details).`;
             }
         }
 
@@ -172,7 +175,7 @@
          * Sets up a real-time listener for the battery collection.
          */
         function listenForBatteryUpdates() {
-            if (!db) return;
+            if (!db) return; // Ensure DB is initialized
 
             const q = query(collection(db, BATTERY_COLLECTION_PATH));
 
@@ -202,6 +205,11 @@
             }
             if (userId === 'anonymous' || userId === 'unknown') {
                 showMessage("Authentication not ready. Please wait.", 'bg-red-100 text-red-800');
+                return;
+            }
+            // Ensure DB is initialized before proceeding
+            if (!db) {
+                showMessage("Database not initialized. Please refresh if the setup error persists.", 'bg-red-100 text-red-800');
                 return;
             }
 
@@ -338,6 +346,12 @@
             addButton.disabled = true;
             addButton.textContent = 'Registering...';
 
+            // Ensure DB is initialized before proceeding
+            if (!db) {
+                showMessage("Database not initialized. Please refresh if the setup error persists.", 'bg-red-100 text-red-800');
+                return;
+            }
+
             try {
                 const docRef = doc(db, BATTERY_COLLECTION_PATH, batteryId);
                 const docSnap = await getDoc(docRef);
@@ -386,6 +400,14 @@
                 { id: 'BATT-004', category: 'Mobile Robot Drive' },
                 { id: 'BATT-005', category: 'Handheld Tool' }
             ];
+
+            // Ensure DB is initialized before proceeding
+            if (!db) {
+                showMessage("Database not initialized. Please refresh if the setup error persists.", 'bg-red-100 text-red-800');
+                seedButton.textContent = 'Initialize Fleet with Sample Data (If empty)';
+                seedButton.disabled = false;
+                return;
+            }
 
             try {
                 for (const item of sampleBatteries) {
