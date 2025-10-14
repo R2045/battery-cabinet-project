@@ -103,7 +103,7 @@
         let html5QrCode;
         let isScannerRunning = false;
         let scanTarget = 'ctec'; // 'ctec' or 'battery'
-        let isScanOnCooldown = false; // --- FIX 1: Add a cooldown flag ---
+        let isScanOnCooldown = false;
 
         const LOCAL_STORAGE_KEY = 'batteryFleetData';
 
@@ -121,14 +121,14 @@
             if (savedData) {
                 batteryData = JSON.parse(savedData);
             } else {
-                batteryData = {}; // Initialize if nothing is saved
+                batteryData = {};
             }
             renderBatteries();
         }
 
         function saveDataToLocalStorage() {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(batteryData));
-            renderBatteries(); // Re-render the list every time we save
+            renderBatteries();
         }
 
         // --- UI Helper Functions ---
@@ -189,7 +189,7 @@
                     return;
                 }
                 currentBattery.status = 'available';
-                currentBattery.checkedOutTo = null; // Clear the user
+                currentBattery.checkedOutTo = null;
                 currentBattery.lastTransactionTime = new Date().toISOString();
                 showMessage(`Successfully checked in '${batteryId}'. It is now available.`);
             }
@@ -269,12 +269,10 @@
 
         // --- QR/Barcode Scanning Logic ---
         function onScanSuccess(decodedText, decodedResult) {
-            // --- FIX 2: If we are on cooldown, ignore this scan and do nothing ---
             if (isScanOnCooldown) {
                 return;
             }
 
-            // --- FIX 3: Start a 2-second cooldown to prevent instant double-scans ---
             isScanOnCooldown = true;
             setTimeout(() => { isScanOnCooldown = false; }, 2000);
 
@@ -284,7 +282,7 @@
             } else {
                 batteryIdInput.value = decodedText;
                 if (isScannerRunning) {
-                    toggleScanner(); // Stop the scanner after the final scan
+                    toggleScanner();
                 }
                 handleTransactionBasedOnInput();
             }
@@ -309,7 +307,19 @@
 
         function toggleScanner() {
             if (!isScannerRunning) {
-                html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, onScanSuccess, onScanFailure)
+                // Create a configuration object for the scanner
+                const scannerConfig = {
+                    fps: 10,
+                    qrbox: { width: 250, height: 250 },
+                    // Explicitly tell the scanner which formats to support.
+                    formatsToSupport: [
+                        Html5QrcodeSupportedFormats.CODE_11,
+                        Html5QrcodeSupportedFormats.CODE_128
+                    ]
+                };
+
+                // Start the scanner using the new configuration
+                html5QrCode.start({ facingMode: "environment" }, scannerConfig, onScanSuccess, onScanFailure)
                     .then(() => {
                         isScannerRunning = true;
                         scannerToggleBtn.textContent = 'Stop Camera Scan';
