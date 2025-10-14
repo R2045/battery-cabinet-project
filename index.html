@@ -191,26 +191,21 @@
         }
 
         // --- Battery Management ---
-        
-        // MODIFICATION 3: Core registration logic moved to its own function
         function registerBattery(newId, newCategory) {
             if (!newId || !newCategory) {
                 showMessage('Both Battery ID and Category are required.', true);
-                return; // Return false to indicate failure
+                return; 
             }
-
             if (batteryData[newId]) {
                 showMessage(`A battery with ID '${newId}' already exists.`, true);
                 return;
             }
-
             batteryData[newId] = {
                 category: newCategory.trim(),
                 status: 'available',
                 checkedOutTo: null,
                 lastTransactionTime: new Date().toISOString()
             };
-
             saveDataToLocalStorage();
             showMessage(`Successfully registered new battery: '${newId}'.`);
             document.getElementById('newBatteryId').value = '';
@@ -218,14 +213,12 @@
             updateButtonStates();
         }
 
-        // Manual add button now calls the core function
         function addNewBattery() {
             const newId = document.getElementById('newBatteryId').value.trim().toUpperCase();
             const newCategory = document.getElementById('newBatteryCategory').value.trim();
             registerBattery(newId, newCategory);
         }
         
-        // MODIFICATION 4: All-new functions for the scan-to-add feature
         function onScanNewBatterySuccess(decodedText) {
             html5QrCode.stop().then(() => {
                 isScannerRunning = false;
@@ -250,7 +243,7 @@
         }
         
         function scanNewBattery() {
-            if (isScannerRunning) { toggleScanner(); } // Stop main scanner if running
+            if (isScannerRunning) { toggleScanner(); } 
             showMessage('Point the camera at a new battery QR code...');
             html5QrCode.start(
                 { facingMode: "environment" }, 
@@ -259,7 +252,6 @@
                 onScanFailure
             ).catch(err => showMessage('Failed to start camera. Check permissions.', true));
         }
-
 
         function seedInitialData() {
             const seedData = {
@@ -295,6 +287,9 @@
                 batteryIdInput.value = decodedText;
                 if (isScannerRunning) { toggleScanner(); }
                 handleTransactionBasedOnInput();
+                // --- THIS IS THE ONLY CHANGE ---
+                // After the transaction, reset the target to 'ctec' for the next person.
+                toggleScanTarget(); 
             }
             updateButtonStates();
         }
@@ -302,8 +297,13 @@
         function onScanFailure(error) { /* Keep quiet */ }
 
         function toggleScanTarget() {
-            scanTarget = (scanTarget === 'ctec') ? 'battery' : 'ctec';
-            scanTargetDisplay.textContent = (scanTarget === 'ctec') ? 'CTEC ID' : 'Battery ID';
+            if (scanTarget === 'ctec') {
+                scanTarget = 'battery';
+                scanTargetDisplay.textContent = 'Battery ID';
+            } else {
+                scanTarget = 'ctec';
+                scanTargetDisplay.textContent = 'CTEC ID';
+            }
         }
 
         function toggleScanner() {
