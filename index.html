@@ -103,6 +103,7 @@
         let html5QrCode;
         let isScannerRunning = false;
         let scanTarget = 'ctec'; // 'ctec' or 'battery'
+        let isScanOnCooldown = false; // --- FIX 1: Add a cooldown flag ---
 
         const LOCAL_STORAGE_KEY = 'batteryFleetData';
 
@@ -146,7 +147,6 @@
             document.getElementById('add-new-btn').disabled = !document.getElementById('newBatteryId').value || !document.getElementById('newBatteryCategory').value;
         }
         
-        // Add event listeners to update buttons on input
         ctecIdInput.addEventListener('input', updateButtonStates);
         batteryIdInput.addEventListener('input', updateButtonStates);
         document.getElementById('newBatteryId').addEventListener('input', updateButtonStates);
@@ -209,7 +209,6 @@
                  showMessage(`Battery '${batteryId}' does not exist.`, true);
                  return;
             }
-            // If battery is checked out, assume check-in. Otherwise, assume checkout.
             const action = batteryData[batteryId].status === 'checked-out' ? 'checkin' : 'checkout';
             handleTransaction(action);
         }
@@ -254,7 +253,7 @@
 
             let count = 0;
             for (const id in seedData) {
-                if (!batteryData[id]) { // Only add if it doesn't exist
+                if (!batteryData[id]) { 
                     batteryData[id] = { ...seedData[id], lastTransactionTime: new Date().toISOString() };
                     count++;
                 }
@@ -270,12 +269,23 @@
 
         // --- QR/Barcode Scanning Logic ---
         function onScanSuccess(decodedText, decodedResult) {
+            // --- FIX 2: If we are on cooldown, ignore this scan and do nothing ---
+            if (isScanOnCooldown) {
+                return;
+            }
+
+            // --- FIX 3: Start a 2-second cooldown to prevent instant double-scans ---
+            isScanOnCooldown = true;
+            setTimeout(() => { isScanOnCooldown = false; }, 2000);
+
             if (scanTarget === 'ctec') {
                 ctecIdInput.value = decodedText;
                 toggleScanTarget();
             } else {
                 batteryIdInput.value = decodedText;
-                toggleScanner();
+                if (isScannerRunning) {
+                    toggleScanner(); // Stop the scanner after the final scan
+                }
                 handleTransactionBasedOnInput();
             }
             updateButtonStates();
@@ -324,7 +334,6 @@
                 return;
             }
 
-            // Sort batteries by ID for consistent ordering
             batteryIds.sort();
 
             batteryListDiv.innerHTML = batteryIds.map(id => {
@@ -360,7 +369,6 @@
             updateButtonStates();
         }
         
-        // --- Run the app ---
         main();
     </script>
 </body>
