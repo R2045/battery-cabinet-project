@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battery Management & Checkout System (Front Camera)</title>
-    <!-- Load Tailwind CSS for modern styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load html5-qrcode library for camera scanning -->
     <script src="https://unpkg.com/html5-qrcode"></script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
         .card { background-color: #ffffff; border-radius: 1rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); padding: 1.5rem; }
         .status-available { background-color: #d1fae5; color: #065f46; }
         .status-checked-out { background-color: #fee2e2; color: #991b1b; }
+        .status-charging { background-color: #fef9c3; color: #854d0e; }
         #reader { width: 100%; max-width: 400px; margin: 1rem auto; border-radius: 0.5rem; overflow: hidden; }
     </style>
 </head>
@@ -23,7 +22,6 @@
             <p id="system-status" class="text-lg text-gray-600">System Ready. Data is saved locally in your browser.</p>
         </header>
 
-        <!-- 1. Main Transaction Card -->
         <div class="card mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
                 <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2zM15.5 10.5a.5.5 0 11-1 0 .5.5 0 011 0z"></path></svg>
@@ -68,7 +66,6 @@
             </div>
         </div>
         
-        <!-- 2. Add New Battery Card -->
         <div class="card mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
                 <svg class="w-6 h-6 mr-2 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -100,7 +97,6 @@
             </button>
         </div>
 
-        <!-- 3. Battery Status Dashboard -->
         <div class="card mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
                 <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0-4c-1.657 0-3 .895-3 2s1.343 2 3 2m-3 3h6M3 6h18M3 10h18M3 14h18M3 18h18"></path></svg>
@@ -112,7 +108,6 @@
         </div>
     </div>
 
-    <!-- Local Storage and Scanning Logic -->
     <script>
         // --- Global App State & Services ---
         let batteryData = {}; 
@@ -122,6 +117,7 @@
         let isScanOnCooldown = false;
 
         const LOCAL_STORAGE_KEY = 'batteryFleetData';
+        const CHARGE_TIME_MS = 15000; // 15 seconds for charging simulation
 
         // --- DOM Element References ---
         const ctecIdInput = document.getElementById('ctecIdInput');
@@ -135,6 +131,11 @@
         function loadDataFromLocalStorage() {
             const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
             batteryData = savedData ? JSON.parse(savedData) : {};
+            Object.keys(batteryData).forEach(id => {
+                if (batteryData[id].status === 'charging') {
+                    resumeChargingTimer(id);
+                }
+            });
             renderBatteries();
         }
 
@@ -176,16 +177,20 @@
             if (type === 'checkout') {
                 if (!ctecId) return showMessage('Person ID is required for checkout.', true);
                 if (currentBattery.status === 'checked-out') return showMessage(`Battery is already checked out to ${currentBattery.checkedOutTo}.`, true);
+                if (currentBattery.status === 'charging') return showMessage(`Battery '${batteryId}' is still charging.`, true);
+                
                 currentBattery.status = 'checked-out';
                 currentBattery.checkedOutTo = ctecId;
-                // --- FEATURE 1: Increment checkout count ---
                 currentBattery.checkoutCount = (currentBattery.checkoutCount || 0) + 1;
                 showMessage(`Successfully checked out '${batteryId}' to '${ctecId}'.`);
             } else if (type === 'checkin') {
-                if (currentBattery.status === 'available') return showMessage(`Battery '${batteryId}' is already available.`, true);
-                currentBattery.status = 'available';
+                if (currentBattery.status !== 'checked-out') return showMessage(`Battery '${batteryId}' cannot be checked in.`, true);
+
+                currentBattery.status = 'charging';
                 currentBattery.checkedOutTo = null;
-                showMessage(`Successfully checked in '${batteryId}'.`);
+                currentBattery.chargeStartTime = new Date().toISOString();
+                startChargingTimer(batteryId);
+                showMessage(`Battery '${batteryId}' is now charging.`);
             }
             
             currentBattery.lastTransactionTime = new Date().toISOString();
@@ -200,6 +205,41 @@
             if (!batteryId || !batteryData[batteryId]) return;
             const action = batteryData[batteryId].status === 'checked-out' ? 'checkin' : 'checkout';
             handleTransaction(action);
+        }
+
+        // --- Charging Logic ---
+        function startChargingTimer(batteryId) {
+            setTimeout(() => {
+                const battery = batteryData[batteryId];
+                if (battery && battery.status === 'charging') {
+                    battery.status = 'available';
+                    battery.chargeStartTime = null;
+                    saveDataToLocalStorage();
+                }
+            }, CHARGE_TIME_MS);
+        }
+
+        function resumeChargingTimer(batteryId) {
+            const battery = batteryData[batteryId];
+            if (!battery || !battery.chargeStartTime) return;
+            const startTime = new Date(battery.chargeStartTime).getTime();
+            const elapsedTime = Date.now() - startTime;
+
+            if (elapsedTime >= CHARGE_TIME_MS) {
+                battery.status = 'available';
+                battery.chargeStartTime = null;
+                saveDataToLocalStorage();
+            } else {
+                const remainingTime = CHARGE_TIME_MS - elapsedTime;
+                setTimeout(() => {
+                    const currentBattery = batteryData[batteryId];
+                    if (currentBattery && currentBattery.status === 'charging') {
+                        currentBattery.status = 'available';
+                        currentBattery.chargeStartTime = null;
+                        saveDataToLocalStorage();
+                    }
+                }, remainingTime);
+            }
         }
 
         // --- Battery Management ---
@@ -217,7 +257,6 @@
                 status: 'available',
                 checkedOutTo: null,
                 lastTransactionTime: new Date().toISOString(),
-                // --- FEATURE 1: Initialize count for new batteries ---
                 checkoutCount: 0
             };
             saveDataToLocalStorage();
@@ -290,8 +329,7 @@
         }
         
         function resetSystem() {
-            const isConfirmed = confirm("Are you sure you want to delete ALL battery data?\n\nThis action cannot be undone.");
-            if (isConfirmed) {
+            if (confirm("Are you sure you want to delete ALL battery data?\n\nThis action cannot be undone.")) {
                 batteryData = {};
                 saveDataToLocalStorage();
                 showMessage("System has been reset successfully.");
@@ -354,10 +392,26 @@
             }
             batteryListDiv.innerHTML = batteryIds.map(id => {
                 const battery = batteryData[id];
-                const isAvailable = battery.status === 'available';
-                const statusClass = isAvailable ? 'status-available' : 'status-checked-out';
-                // --- FEATURE 2: Updated status text and added checkout count ---
-                const statusText = isAvailable ? 'Available / Charging' : `Checked Out: ${battery.checkedOutTo}`;
+                let statusClass, statusText;
+
+                switch(battery.status) {
+                    case 'available':
+                        statusClass = 'status-available';
+                        statusText = 'Available';
+                        break;
+                    case 'checked-out':
+                        statusClass = 'status-checked-out';
+                        statusText = `Checked Out: ${battery.checkedOutTo}`;
+                        break;
+                    case 'charging':
+                        statusClass = 'status-charging';
+                        statusText = 'Charging';
+                        break;
+                    default:
+                        statusClass = '';
+                        statusText = 'Unknown';
+                }
+                
                 const time = new Date(battery.lastTransactionTime).toLocaleString();
                 const checkoutCount = battery.checkoutCount || 0;
 
