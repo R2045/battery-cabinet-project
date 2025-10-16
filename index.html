@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Battery Management & Checkout System (Local)</title>
+    <title>Battery Management & Checkout System (Front Camera)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/html5-qrcode"></script>
     <style>
@@ -86,17 +86,14 @@
                     Scan to Add New Battery
                 </button>
             </div>
-            
-            <div class="mt-6 border-t pt-4 space-y-3">
-                 <button id="seed-data-btn" onclick="seedInitialData()" 
-                    class="w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out text-sm">
-                    Initialize Fleet with Sample Data (If empty)
-                </button>
-                <button id="reset-system-btn" onclick="resetSystem()" 
-                    class="w-full px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-800 transition duration-150 ease-in-out text-sm">
-                    Reset System (Delete All Data)
-                </button>
-            </div>
+            <button id="seed-data-btn" onclick="seedInitialData()" 
+                    class="mt-4 w-full px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out text-sm">
+                Initialize Fleet with Sample Data (If empty)
+            </button>
+             <button id="reset-system-btn" onclick="resetSystem()" 
+                    class="mt-4 w-full px-4 py-2 bg-red-600 text-white font-bold rounded-lg hover:bg-red-800 transition duration-150 ease-in-out text-sm">
+                Reset System (Delete All Data)
+            </button>
         </div>
 
         <div class="card mb-8">
@@ -252,8 +249,9 @@
         function scanNewBattery() {
             if (isScannerRunning) { toggleScanner(); } 
             showMessage('Point the camera at a new battery QR code...');
+            // MODIFICATION: Changed to "user" for the front camera
             html5QrCode.start(
-                { facingMode: "environment" }, 
+                { facingMode: "user" }, 
                 { fps: 10, qrbox: { width: 250, height: 250 } }, 
                 onScanNewBatterySuccess, 
                 onScanFailure
@@ -282,14 +280,10 @@
             }
         }
         
-        // --- THIS IS THE NEW FUNCTION ---
         function resetSystem() {
             const isConfirmed = confirm("Are you sure you want to delete ALL battery data?\n\nThis action cannot be undone.");
-            
             if (isConfirmed) {
-                // Clear the in-memory data object
                 batteryData = {};
-                // Clear localStorage and re-render the empty list
                 saveDataToLocalStorage();
                 showMessage("System has been reset successfully.");
             }
@@ -327,7 +321,8 @@
 
         function toggleScanner() {
             if (!isScannerRunning) {
-                html5QrCode.start({ facingMode: "environment" }, { fps: 10, qrbox: { width: 250, height: 250 } }, onScanSuccess, onScanFailure)
+                // MODIFICATION: Changed to "user" for the front camera
+                html5QrCode.start({ facingMode: "user" }, { fps: 10, qrbox: { width: 250, height: 250 } }, onScanSuccess, onScanFailure)
                     .then(() => {
                         isScannerRunning = true;
                         scannerToggleBtn.textContent = 'Stop Camera Scan';
