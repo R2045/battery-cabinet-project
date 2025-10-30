@@ -12,6 +12,7 @@
         .status-available { background-color: #d1fae5; color: #065f46; }
         .status-checked-out { background-color: #fee2e2; color: #991b1b; }
         .status-charging { background-color: #fef9c3; color: #854d0e; }
+        .status-faulty { background-color: #4b5563; color: #ffffff; } /* New Faulty Status */
         #reader { width: 100%; max-width: 400px; margin: 1rem auto; border-radius: 0.5rem; overflow: hidden; }
     </style>
 </head>
@@ -46,6 +47,9 @@
                 <button onclick="handleTransaction('checkout')" id="checkout-btn" class="flex-1 px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition" disabled>Check Out</button>
                 <button onclick="handleTransaction('checkin')" id="checkin-btn" class="flex-1 px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition" disabled>Check In / Charge</button>
             </div>
+            
+            <!-- New Fault Button -->
+            <button onclick="toggleFaultStatus()" id="fault-btn" class="w-full mt-4 px-6 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition" disabled>Mark as Faulty</button>
         </div>
         
         <!-- Other cards remain the same -->
@@ -67,7 +71,7 @@
         </div>
         <div class="card mb-8">
             <h2 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
-                <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0-4c-1.657 0-3 .895-3 2s1.343 2 3 2m-3 3h6M3 6h18M3 10h18M3 14h18M3 18h18"></path></svg>
+                <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2v2m0-4c1.657 0-3 .895-3 2s1.343 2 3 2m-3 3h6M3 6h18M3 10h18M3 14h18M3 18h18"></path></svg>
                 Battery Fleet Status
             </h2>
             <div id="battery-list" class="space-y-3"><p class="text-gray-500">Loading battery data...</p></div>
@@ -95,6 +99,7 @@
         const batteryListDiv = document.getElementById('battery-list');
         const scannerToggleBtn = document.getElementById('scanner-toggle-btn');
         const scanTargetDisplay = document.getElementById('scanTargetDisplay');
+        const faultBtn = document.getElementById('fault-btn');
         
         function loadDataFromLocalStorage() {
             const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -125,6 +130,25 @@
             document.getElementById('checkout-btn').disabled = !ctecId || !batteryId;
             document.getElementById('checkin-btn').disabled = !batteryId;
             document.getElementById('add-new-btn').disabled = !document.getElementById('newBatteryId').value || !document.getElementById('newBatteryCategory').value;
+        
+            const battery = batteryData[batteryId];
+            if (battery) {
+                faultBtn.disabled = false;
+                if (battery.status === 'faulty') {
+                    faultBtn.textContent = 'Clear Fault (Set to Available)';
+                    faultBtn.classList.replace('bg-gray-600', 'bg-red-600');
+                    faultBtn.classList.replace('hover:bg-gray-700', 'hover:bg-red-700');
+                } else {
+                    faultBtn.textContent = 'Mark as Faulty';
+                    faultBtn.classList.replace('bg-red-600', 'bg-gray-600');
+                    faultBtn.classList.replace('hover:bg-red-700', 'hover:bg-gray-700');
+                }
+            } else {
+                faultBtn.disabled = true;
+                faultBtn.textContent = 'Mark as Faulty';
+                faultBtn.classList.replace('bg-red-600', 'bg-gray-600');
+                faultBtn.classList.replace('hover:bg-red-700', 'hover:bg-gray-700');
+            }
         }
         
         ctecIdInput.addEventListener('input', updateButtonStates);
@@ -142,7 +166,7 @@
 
             if (type === 'checkout') {
                 if (!ctecId) return showMessage('Person ID is required for checkout.', true);
-                if (currentBattery.status !== 'available') return showMessage(`Battery '${batteryId}' is not available.`, true);
+                if (currentBattery.status !== 'available') return showMessage(`Battery '${batteryId}' is not available (Status: ${currentBattery.status}).`, true);
                 
                 currentBattery.status = 'checked-out';
                 currentBattery.checkedOutTo = ctecId;
@@ -180,8 +204,39 @@
         function handleTransactionBasedOnInput() {
             const batteryId = batteryIdInput.value.trim().toUpperCase();
             if (!batteryId || !batteryData[batteryId]) return;
-            const action = batteryData[batteryId].status === 'checked-out' ? 'checkin' : 'checkout';
+            
+            const currentStatus = batteryData[batteryId].status;
+            if (currentStatus === 'faulty') {
+                showMessage(`Battery '${batteryId}' is faulty. Clear fault to use.`, true);
+                return;
+            }
+            
+            const action = currentStatus === 'checked-out' ? 'checkin' : 'checkout';
             handleTransaction(action);
+        }
+
+        function toggleFaultStatus() {
+            const batteryId = batteryIdInput.value.trim().toUpperCase();
+            if (!batteryId || !batteryData[batteryId]) return showMessage('Battery not found.', true);
+            
+            const battery = batteryData[batteryId];
+            if (battery.status === 'faulty') {
+                battery.status = 'available';
+                showMessage(`Fault cleared for '${batteryId}'. Battery is now available.`);
+            } else {
+                battery.status = 'faulty';
+                battery.checkedOutTo = null;
+                battery.checkoutTime = null;
+                battery.chargeStartTime = null;
+                battery.chargeDurationMs = null;
+                showMessage(`Battery '${batteryId}' marked as FAULTY. Cannot be used.`);
+            }
+            
+            battery.lastTransactionTime = new Date().toISOString();
+            saveDataToLocalStorage();
+            ctecIdInput.value = '';
+            batteryIdInput.value = '';
+            updateButtonStates();
         }
 
         function startChargingTimer(batteryId, durationMs) {
@@ -258,7 +313,22 @@
         }
 
         function seedInitialData() {
-            // ... (seed data logic remains the same)
+            const seedData = {
+                "BATT-SYMA-01": { category: "Syma X5C Drone", status: "available", checkoutCount: 0 },
+                "BATT-DJI-01": { category: "DJI Mini 3", status: "available", checkoutCount: 5 },
+                "BATT-GOPRO-01": { category: "GoPro Hero 9", status: "available", checkoutCount: 12 },
+                "BATT-FAULTY-01": { category: "DJI Mini 3", status: "faulty", checkoutCount: 20 },
+            };
+            let count = 0;
+            for (const id in seedData) {
+                if (!batteryData[id]) {
+                    const fullData = { ...{ lastTransactionTime: new Date().toISOString(), checkoutTime: null, chargeStartTime: null, chargeDurationMs: null }, ...seedData[id] };
+                    batteryData[id] = fullData;
+                    count++;
+                }
+            }
+            if (count > 0) { saveDataToLocalStorage(); showMessage(`Added ${count} sample batteries.`); }
+            else { showMessage("Sample data already exists.", false); }
         }
         
         function resetSystem() {
@@ -342,6 +412,7 @@
                 switch(battery.status) {
                     case 'available': statusClass = 'status-available'; statusText = 'Available'; break;
                     case 'checked-out': statusClass = 'status-checked-out'; statusText = `Checked Out: ${battery.checkedOutTo}`; break;
+                    case 'faulty': statusClass = 'status-faulty'; statusText = 'Faulty'; break;
                     case 'charging':
                         statusClass = 'status-charging';
                         if (battery.chargeStartTime && battery.chargeDurationMs) {
